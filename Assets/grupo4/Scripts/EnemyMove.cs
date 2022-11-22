@@ -10,7 +10,7 @@ public class EnemyMove : MonoBehaviour
     [SerializeField]
     protected Transform pos;
     private float y;
-    private int vida = 1;
+    private int vida = 0;
     void Update()
     {
         
