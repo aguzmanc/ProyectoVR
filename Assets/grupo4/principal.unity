@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8613250353671986164, guid: fc1618cb68fcb9a4eb31980fe5aed14e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8990232842588913998, guid: fc1618cb68fcb9a4eb31980fe5aed14e, type: 3}
       propertyPath: m_RootOrder
@@ -706,7 +706,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136724808}
   m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
-  m_LocalPosition: {x: -0.018, y: 1.092263, z: 1.304}
+  m_LocalPosition: {x: -0.018, y: 1.092263, z: 0.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 517311804}
@@ -743,9 +743,8 @@ MonoBehaviour:
   m_allowOffhandGrab: 1
   m_snapPosition: 0
   m_snapOrientation: 0
-  m_snapOffset: {fileID: 2134528700}
-  m_grabPoints:
-  - {fileID: 2134528701}
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
 --- !u!54 &1136724813
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1235,7 +1234,7 @@ MonoBehaviour:
   - {fileID: 1413201555}
   - {fileID: 1411677581}
   m_controller: 2
-  m_parentTransform: {fileID: 0}
+  m_parentTransform: {fileID: 2145429215}
   m_player: {fileID: 0}
 --- !u!54 &1420169307
 Rigidbody:
@@ -2719,7 +2718,7 @@ MonoBehaviour:
   - {fileID: 1782525335}
   - {fileID: 1782525477}
   m_controller: 1
-  m_parentTransform: {fileID: 0}
+  m_parentTransform: {fileID: 2145424091}
   m_player: {fileID: 0}
 --- !u!54 &1790708613
 Rigidbody:
