@@ -6,7 +6,7 @@ public class HandVRAnimatorController : MonoBehaviour
 {
     [SerializeField]
     [Range(0, 1)]
-    float _agarre;
+    public float _agarre;
 
     Animator _anim;
 
@@ -17,7 +17,7 @@ public class HandVRAnimatorController : MonoBehaviour
     
     void Update()
     {
-        _agarre = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger);
+        //_agarre = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger);
         _anim.SetFloat("Pinch", _agarre);
     }
 }
