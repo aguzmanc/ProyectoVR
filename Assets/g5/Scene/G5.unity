@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -310,7 +310,7 @@ Transform:
   m_LocalScale: {x: 3.9097, y: 3.9097, z: 3.9097}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1222167226
 PrefabInstance:
@@ -322,6 +322,22 @@ PrefabInstance:
     - target: {fileID: 5868743690059647331, guid: f7ef40398bb975746af3d1a5918de6f6, type: 3}
       propertyPath: m_Name
       value: Objetos
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419176261969853544, guid: f7ef40398bb975746af3d1a5918de6f6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158165315943491737, guid: f7ef40398bb975746af3d1a5918de6f6, type: 3}
+      propertyPath: m_Name
+      value: Municion
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158165316358498331, guid: f7ef40398bb975746af3d1a5918de6f6, type: 3}
+      propertyPath: m_Name
+      value: Municion
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158165316648685974, guid: f7ef40398bb975746af3d1a5918de6f6, type: 3}
+      propertyPath: m_Name
+      value: Municion
       objectReference: {fileID: 0}
     - target: {fileID: 8756408813766168920, guid: f7ef40398bb975746af3d1a5918de6f6, type: 3}
       propertyPath: m_RootOrder
