@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 64761749}
   - component: {fileID: 64761748}
   - component: {fileID: 64761747}
+  - component: {fileID: 64761752}
   - component: {fileID: 64761751}
   m_Layer: 0
   m_Name: Magazine (1)
@@ -235,6 +236,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.039383586, y: 0.26788422, z: 0.20057638}
   m_Center: {x: -4.3345327e-11, y: -0.0041034003, z: -0.008074655}
+--- !u!114 &64761752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64761746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
 --- !u!1 &111853805
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,6 +358,7 @@ GameObject:
   - component: {fileID: 136357657}
   - component: {fileID: 136357656}
   - component: {fileID: 136357655}
+  - component: {fileID: 136357660}
   - component: {fileID: 136357659}
   m_Layer: 0
   m_Name: Magazine (3)
@@ -440,6 +459,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.039383586, y: 0.26788422, z: 0.20057638}
   m_Center: {x: -4.3345327e-11, y: -0.0041034003, z: -0.008074655}
+--- !u!114 &136357660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136357654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
 --- !u!1 &441029401 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8324a4441b67c224c84b60eff2111b89, type: 3}
@@ -461,6 +497,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &441029403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441029401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
 --- !u!4 &441029405 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8324a4441b67c224c84b60eff2111b89, type: 3}
@@ -1198,6 +1251,7 @@ GameObject:
   - component: {fileID: 2024851463}
   - component: {fileID: 2024851462}
   - component: {fileID: 2024851461}
+  - component: {fileID: 2024851466}
   - component: {fileID: 2024851465}
   m_Layer: 0
   m_Name: Magazine (2)
@@ -1298,6 +1352,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.039383586, y: 0.26788422, z: 0.20057638}
   m_Center: {x: 0.000000059561298, y: -0.0041034003, z: -0.008074655}
+--- !u!114 &2024851466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024851460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
 --- !u!1001 &5184420186605726043
 PrefabInstance:
   m_ObjectHideFlags: 0
