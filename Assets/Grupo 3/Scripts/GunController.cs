@@ -16,10 +16,10 @@ public class GunController : MonoBehaviour
             float rotateVertical = Input.GetAxis("Mouse Y");
 
             _angles.y += rotateHorizontal * sensitivity;
-            _angles.y = Mathf.Clamp(_angles.y, - _maxAngles,_maxAngles);
+            _angles.y = Mathf.Clamp(_angles.y,_maxAngles,_maxAngles);
 
             _angles.x -= rotateVertical * sensitivity;
-            _angles.x = Mathf.Clamp(_angles.x, - _maxAngles,_maxAngles);
+            _angles.x = Mathf.Clamp(_angles.x,_maxAngles,_maxAngles);
 
             gameObject.transform.rotation = Quaternion.Euler(_angles);
         }
