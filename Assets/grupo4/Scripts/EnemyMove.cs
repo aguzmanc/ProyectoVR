@@ -8,7 +8,7 @@ public class EnemyMove : MonoBehaviour
     public float rotationSpeed = 250f;
     public Animator animator;
     [SerializeField]
-    protected Transform pos;
+    public Transform pos;
     private float y;
     private int vida = 1;
     void Update()
@@ -25,4 +25,18 @@ public class EnemyMove : MonoBehaviour
             animator.SetFloat("VelY", y);
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Mjolnir")
+        {
+            animator.SetBool("Death", true);
+            transform.position = new Vector3(transform.position.x,0,transform.position.z);
+            StartCoroutine(EsperaSegundos(4));
+        }
+    }
+    IEnumerator EsperaSegundos(int seconds)
+    {
+      yield return new WaitForSeconds(seconds);
+      Destroy(gameObject);
+    } 
 }

@@ -11,26 +11,88 @@ public class MjolnirActions : MonoBehaviour
     [SerializeField]
     Rigidbody rigidbody;
     [SerializeField]
-    bool vuelo = false;
+    bool vuelo, simulacionAgarrado, habilitado, llamado, couroutineStarted, regreso;
+    [SerializeField]
+    Quaternion rot;
+    [SerializeField]
+    private Transform _mano;
+    [SerializeField]
+    float distancia = 1f;
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        vuelo = false;
+        habilitado = true;
+        simulacionAgarrado = false;
+        llamado = false;
+        couroutineStarted = false;
+        regreso = false;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
+
         agarrado = GetComponent<OVRGrabbable>().isGrabbed;
-        if(!agarrado && transform.position.y >= 1.4f || vuelo)
+        if(!agarrado && transform.position.y >= 1.4f) vuelo = true;
+        if(vuelo && !llamado) VueloMartillo();
+        if(agarrado) habilitado = true;
+        if(habilitado) rigidbody.isKinematic = true;
+        else rigidbody.isKinematic = false;
+        if(!llamado && ((!agarrado && transform.position.y <= 0.6f) || transform.position.x >= 10 || transform.position.x <= -10 || transform.position.z >= 10 || transform.position.z <= -10))
         {
-            rigidbody.isKinematic = true;
-            transform.Translate(new Vector3(0f,velocidad * Time.deltaTime,0f),Space.Self);
-            vuelo = true;
-        } 
-        if(!agarrado && transform.position.y <= 0.35f)
+            CancelarVuelo();
+        }   
+        if(simulacionAgarrado)
         {
-            vuelo = false;
-            rigidbody.isKinematic = false;
+            if(VerificadoRegreso())
+            {
+                llamado = true;
+                habilitado = true;
+                Vector3 piso = _mano.position - transform.position;
+                Debug.DrawRay(transform.position, piso, Color.green);
+                rot = Quaternion.LookRotation(piso);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime);
+                if(!couroutineStarted)
+                    StartCoroutine(EsperaSegundos(3));
+                if(regreso)VueloRegresoMartillo();
+            }
+            else transform.position = _mano.transform.position;
         }
+        else CancelarRegreso();
     }
+
+    private void VueloMartillo(){
+        transform.Translate(new Vector3(0f,velocidad * Time.deltaTime,0f),Space.Self);
+    }
+    private void VueloRegresoMartillo(){
+        transform.Translate(new Vector3(0f, 0,velocidad * Time.deltaTime),Space.Self);
+    }
+    private void CancelarVuelo(){
+        habilitado = false;
+        vuelo = false;
+    }
+    private void CancelarRegreso()
+    {
+        llamado = false;
+        regreso = false;
+        couroutineStarted = false;
+    }
+    private bool VerificadoRegreso()
+    {
+        if((transform.position.x <= _mano.transform.position.x + distancia && transform.position.x >= _mano.transform.position.x - distancia) && (transform.position.z <= _mano.transform.position.z + distancia && transform.position.z >= _mano.transform.position.z - distancia))
+            return false;
+        return true;
+    }
+    private void LlamadoDeMartilloComponentesCalculoRotacion()
+    {
+        habilitado = false;
+        vuelo = false;
+    }
+    IEnumerator EsperaSegundos(int seconds)
+    {
+      couroutineStarted = true;
+      LlamadoDeMartilloComponentesCalculoRotacion();
+      yield return new WaitForSeconds(seconds);
+      regreso = true;
+    } 
 }
