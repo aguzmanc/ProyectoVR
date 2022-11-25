@@ -5,8 +5,20 @@ using UnityEngine;
 public class DartController : MonoBehaviour
 {
     public GameController gameController;
-
-    void OnCollisionEnter(Collision other) {
-        gameController.TargetHit(other.gameObject);
+    private float liveTime = 5.0f;
+    private bool temporal = false;
+    void Update()
+    {
+        if(temporal && liveTime<=0)
+        {
+            Destroy(gameObject);
+        }
+    }
+    void OnCollisionEnter(Collision obj) {
+        gameController.TargetHit(obj.gameObject);
+    }
+    public void SetAsTemporal()
+    {
+        temporal=true;
     }
 }
