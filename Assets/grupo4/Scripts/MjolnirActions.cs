@@ -15,9 +15,11 @@ public class MjolnirActions : MonoBehaviour
     [SerializeField]
     Quaternion rot;
     [SerializeField]
-    private Transform _mano;
+    private Transform _mano, _camara;
     [SerializeField]
     float distancia = 1f;
+    Vector3 direccion;
+    Vector3 neutro = new Vector3(0,0,0);
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -27,10 +29,12 @@ public class MjolnirActions : MonoBehaviour
         llamado = false;
         couroutineStarted = false;
         regreso = false;
+        direccion = neutro;
     }
     
     void Update()
     {
+        Debug.DrawLine(_camara.position, _camara.forward * 50, Color.blue);
         if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch) > 0) simulacionAgarrado = true;
         else simulacionAgarrado = false;
         agarrado = (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch) > 0);
@@ -68,12 +72,20 @@ public class MjolnirActions : MonoBehaviour
     }
 
     private void VueloMartillo(){
+        if(direccion == neutro){
+            direccion = _camara.forward;            
+        }
+        transform.forward = direccion;
+        
+        
         transform.Translate(new Vector3(0f,velocidad * Time.deltaTime,0f),Space.Self);
     }
     private void VueloRegresoMartillo(){
+        direccion = neutro;
         transform.Translate(new Vector3(0f, 0,velocidad * Time.deltaTime),Space.Self);
     }
     private void CancelarVuelo(){
+        direccion = neutro;
         habilitado = false;
         vuelo = false;
     }

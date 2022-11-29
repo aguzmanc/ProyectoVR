@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8613250353671986164, guid: fc1618cb68fcb9a4eb31980fe5aed14e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8990232842588913998, guid: fc1618cb68fcb9a4eb31980fe5aed14e, type: 3}
       propertyPath: m_RootOrder
@@ -829,7 +829,8 @@ MonoBehaviour:
   couroutineStarted: 0
   regreso: 0
   rot: {x: 0, y: 0, z: 0, w: 0}
-  _mano: {fileID: 0}
+  _mano: {fileID: 2145429215}
+  _camara: {fileID: 2145506061}
   distancia: 1
 --- !u!1001 &1154688494
 PrefabInstance:

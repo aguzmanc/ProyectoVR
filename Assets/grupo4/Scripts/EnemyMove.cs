@@ -11,6 +11,7 @@ public class EnemyMove : MonoBehaviour
     public Transform pos;
     private float y;
     private int vida = 1;
+    bool muerte = false;
     void Update()
     {
         
@@ -21,7 +22,7 @@ public class EnemyMove : MonoBehaviour
         }else{
             transform.LookAt(new Vector3(pos.position.x, transform.position.y, pos.position.z));
             y = 1;
-            transform.position = Vector3.MoveTowards(transform.position,new Vector3(pos.position.x, transform.position.y, pos.position.z), y* Time.deltaTime * runSpeed);
+            if(!muerte)transform.position = Vector3.MoveTowards(transform.position,new Vector3(pos.position.x, transform.position.y, pos.position.z), y* Time.deltaTime * runSpeed);
             animator.SetFloat("VelY", y);
         }
     }
@@ -30,6 +31,7 @@ public class EnemyMove : MonoBehaviour
         if(other.tag == "Mjolnir")
         {
             animator.SetBool("Death", true);
+            muerte = true;
             transform.position = new Vector3(transform.position.x,0,transform.position.z);
             StartCoroutine(EsperaSegundos(4));
         }
