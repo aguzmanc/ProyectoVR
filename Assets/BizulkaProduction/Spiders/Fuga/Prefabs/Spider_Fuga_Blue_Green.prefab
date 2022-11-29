@@ -1001,9 +1001,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7978624207812061649}
   - component: {fileID: 7978624207798892725}
+  - component: {fileID: 1826686691754324839}
+  - component: {fileID: 3935897376616434573}
+  - component: {fileID: 6531086345139515880}
   m_Layer: 0
   m_Name: Spider_Fuga_Blue_Green
-  m_TagString: Untagged
+  m_TagString: AranaVerde
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1106,6 +1109,53 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0023155212, y: -0.50467485, z: 0.9505632}
     m_Extent: {x: 2.62731, y: 1.6139781, z: 1.7910836}
   m_DirtyAABB: 0
+--- !u!114 &1826686691754324839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7978624207812556273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dd9df7738dbbf34db5463f053d28d24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 7978624207803025015}
+  _animateWhenRun: 1
+  velocidad: 0
+  seguidor: {fileID: 0}
+  life: 0
+--- !u!64 &3935897376616434573
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7978624207812556273}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300006, guid: 17f2f54fedc2dd246828d6a328855293, type: 3}
+--- !u!54 &6531086345139515880
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7978624207812556273}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7978624207812556277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,7 +1197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7978624207812061655}
   - component: {fileID: 7978624207803025015}
-  - component: {fileID: 52657568567217627}
+  - component: {fileID: 2860699502424654246}
   m_Layer: 0
   m_Name: Spider_Fuga_Blue_Green
   m_TagString: Untagged
@@ -1190,7 +1240,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &52657568567217627
+--- !u!114 &2860699502424654246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1199,9 +1249,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7978624207812556279}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dd9df7738dbbf34db5463f053d28d24, type: 3}
+  m_Script: {fileID: 11500000, guid: e7eea807ce85ed34595622f732493d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 7978624207803025015}
-  _animateWhenRun: 1
-  velocidad: 3
+  velocidad: 4
+  moverse: 0

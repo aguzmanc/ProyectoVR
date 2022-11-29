@@ -748,7 +748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4673369876368086}
   - component: {fileID: 95980759410839360}
-  - component: {fileID: -1845671765908168727}
+  - component: {fileID: 3887723700657817224}
   m_Layer: 0
   m_Name: Polygonal Metalon Purple
   m_TagString: Untagged
@@ -807,7 +807,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-1845671765908168727
+--- !u!114 &3887723700657817224
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -816,12 +816,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1462720695320296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36abafb89a4febc4aa3e15fd757b027f, type: 3}
+  m_Script: {fileID: 11500000, guid: 8677b2cf35d9b9b448d529ecd758df98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 95980759410839360}
-  _animateWhenRun: 1
-  velocidad: 3
+  velocidad: 2
+  moverse: 0
 --- !u!1 &1486048802852170
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,9 +861,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4114354663921650}
   - component: {fileID: 137102451305175528}
+  - component: {fileID: 4353915455955195775}
+  - component: {fileID: 7350349057540077595}
+  - component: {fileID: 4839778219750570791}
   m_Layer: 0
   m_Name: Polygonal Metalon
-  m_TagString: Untagged
+  m_TagString: MetalonMorado
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -962,6 +964,52 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.5955523, y: 0.47306192, z: 0.000007748604}
     m_Extent: {x: 2.277113, y: 1.2932206, z: 2.1682854}
   m_DirtyAABB: 0
+--- !u!64 &4353915455955195775
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557458575403366}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 66ca9bf0145725543a1e8a693589f362, type: 3}
+--- !u!54 &7350349057540077595
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557458575403366}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &4839778219750570791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557458575403366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36abafb89a4febc4aa3e15fd757b027f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 95980759410839360}
+  _animateWhenRun: 1
+  seguidor: {fileID: 0}
+  life: 0
 --- !u!1 &1570757768016902
 GameObject:
   m_ObjectHideFlags: 0

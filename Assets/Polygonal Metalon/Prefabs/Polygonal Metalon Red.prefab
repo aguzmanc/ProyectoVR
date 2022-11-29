@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 3
+  moverse: 0
 --- !u!1 &1130806907750044
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,7 +1111,7 @@ GameObject:
   - component: {fileID: 6340517399946837384}
   m_Layer: 0
   m_Name: Polygonal Metalon
-  m_TagString: Untagged
+  m_TagString: MetalonRojo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1252,7 +1253,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 95025375702580604}
   _animateWhenRun: 1
-  velocidad: 0
+  seguidor: {fileID: 0}
+  life: 0
 --- !u!1 &1748964576641720
 GameObject:
   m_ObjectHideFlags: 0

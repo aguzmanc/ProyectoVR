@@ -16,25 +16,47 @@ public class AnimatedControllerDos : MonoBehaviour
 
     public Seguidor seguidor;
     GameObject jugador;
-   
+    public float life;
 
-    
-    private float life = 400;
     private void Start()
     {
         jugador = GameObject.FindGameObjectWithTag("Jugador");
-       // seguidor = FindObjectOfType<Seguidor>();
         seguidor = gameObject.GetComponentInParent<Seguidor>();
+        if (gameObject.tag=="MetalonRojo")
+        {
+            life = 400;
+        }
+        else if (gameObject.tag == "MetalonVerde")
+        {
+            life = 300;
+        }
+        else if (gameObject.tag == "MetalonMorado")
+        {
+            life = 600;
+        }
     }
     IEnumerator RecibirGolpeVivo()
     {
-        _animator.SetBool(MovingHash, false);
-        seguidor.moverse = false;
-        _animator.SetBool(HitHash, true);
         _animateWhenRun = false;
+        seguidor.moverse = false;
+        _animator.SetBool(MovingHash, false);
+        _animator.SetBool(AttackHash, false);
+        _animator.SetBool(HitHash, true);
+        
         yield return new WaitForSeconds(2);
+        _animator.SetBool(MovingHash, true);
+        seguidor.moverse = true;
         _animateWhenRun = true;
-      
+    }
+
+    IEnumerator UltimoAliento()
+    {
+        _animateWhenRun = false;
+        seguidor.moverse = false;
+        _animator.SetBool(MovingHash, false);
+        _animator.SetBool(IsDeadHash, true);  
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,20 +64,19 @@ public class AnimatedControllerDos : MonoBehaviour
         
         if (other.tag == "RashoLaser")
         {
-            seguidor.moverse = false;
-            _animateWhenRun = false;
-               life = life - 50;
+            
+            life = life - 50;
             if (life > 0)
             {
-                RecibirGolpeVivo();
+                StartCoroutine(RecibirGolpeVivo());
             }
             else
             {
-                _animator.SetBool(MovingHash, false);
-                _animator.SetBool(IsDeadHash, true);
-                Destroy(gameObject);
+                StartCoroutine(UltimoAliento());
+
+                
             }
-            seguidor.moverse = true;
+            
 
         }
         else if (other.tag=="Katanazo")
@@ -64,14 +85,11 @@ public class AnimatedControllerDos : MonoBehaviour
             life = life - 100;
             if (life > 0)
             {
-                RecibirGolpeVivo();
+                StartCoroutine(RecibirGolpeVivo());
             }
             else
             {
-                _animator.SetBool(MovingHash, false);
-                _animator.SetBool(IsDeadHash, true);
-                seguidor.moverse = false;
-                Destroy(gameObject);
+                StartCoroutine(UltimoAliento());
             }
             
         }
@@ -92,7 +110,7 @@ public class AnimatedControllerDos : MonoBehaviour
             var position = tr.position;
             float distancia = CalculateDistanceInSpace();
 
-            if (distancia > 4f)
+            if (distancia > 6f)
             {
                 
                 _animator.SetBool(MovingHash, true);

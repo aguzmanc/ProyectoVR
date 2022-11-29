@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Seguidor : MonoBehaviour
+public class SeguidorDos : MonoBehaviour
 {
     GameObject jugador;
     public float velocidad;
@@ -18,10 +18,10 @@ public class Seguidor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (moverse==true)
+        if (moverse == true)
         {
             float distancia = CalculateDistanceInSpace();
-            if (distancia > 6f)
+            if (distancia > 2.5f)
             {
 
                 Vector3 posJugador = new Vector3(jugador.transform.position.x, transform.position.y, jugador.transform.position.z);
@@ -29,7 +29,7 @@ public class Seguidor : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, posJugador, velocidad * Time.deltaTime);
             }
         }
-    
+
 
     }
     private float CalculateDistanceInSpace()
