@@ -8,26 +8,19 @@ public class ShootGun : MonoBehaviour
     [SerializeField] private GameObject bullet_prefab;
     [SerializeField] private Transform fire_point;
 
-    [Header("Weapon Stats")]
-    [SerializeField] private float fire_ratio = 0.3f;
-    [SerializeField] private float projectile_speed = 200f;
-    private bool canFire = true;
+    [Header("Weapon Stats")]    
+    [SerializeField] private float projectile_speed = 200f;    
     
     void Update()
     {
-        if (Input.GetButton("Fire1") && canFire) {
-            StartCoroutine(Shoot());
+        if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) > 0.3f) {
+            Shoot();
         }
     }
 
-    IEnumerator Shoot() {
+    void Shoot() {
         GameObject projectile = GetProjectile();
         projectile.GetComponent<Projectile>().MoveProjectile(projectile_speed);
-
-        canFire = false;
-        yield return new WaitForSeconds(fire_ratio);
-
-        canFire = true;
     }
 
     GameObject GetProjectile() {
