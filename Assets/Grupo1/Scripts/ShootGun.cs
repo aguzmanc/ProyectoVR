@@ -6,6 +6,7 @@ public class ShootGun : MonoBehaviour
 {
     [Header("Weapon Objects")]
     [SerializeField] private GameObject[] bullet_prefab;
+    [SerializeField] private ParticleSystem fx_flash;
     [SerializeField] private Transform fire_point;
 
     [Header("Weapon Stats")]    
@@ -13,13 +14,14 @@ public class ShootGun : MonoBehaviour
     
     void Update()
     {
-        if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) > 0.3f) {
+        if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger)) {
             Shoot();
         }
     }
 
     void Shoot() {
-        GameObject projectile = GetProjectile();
+        GameObject projectile = GetProjectile(); 
+        FlashEffect();       
         projectile.GetComponent<Projectile>().MoveProjectile(projectile_speed);
     }
 
@@ -27,4 +29,10 @@ public class ShootGun : MonoBehaviour
         int rnd = Random.Range(0, bullet_prefab.Length);
         return Instantiate(bullet_prefab[rnd], fire_point.position, fire_point.localRotation);
     }
+
+    void FlashEffect() {
+        ParticleSystem ps = Instantiate(fx_flash, fire_point.position, fire_point.localRotation);
+        Destroy(ps, ps.main.duration);
+    }
+
 }
