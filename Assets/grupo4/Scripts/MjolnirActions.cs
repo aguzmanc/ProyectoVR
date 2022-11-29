@@ -31,8 +31,9 @@ public class MjolnirActions : MonoBehaviour
     
     void Update()
     {
-
-        agarrado = GetComponent<OVRGrabbable>().isGrabbed;
+        if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch) > 0) simulacionAgarrado = true;
+        else simulacionAgarrado = false;
+        agarrado = (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch) > 0);
         if(!agarrado && transform.position.y >= 1.4f) vuelo = true;
         if(vuelo && !llamado) VueloMartillo();
         if(agarrado) habilitado = true;
@@ -56,7 +57,12 @@ public class MjolnirActions : MonoBehaviour
                     StartCoroutine(EsperaSegundos(3));
                 if(regreso)VueloRegresoMartillo();
             }
-            else transform.position = _mano.transform.position;
+            else 
+            {
+                transform.position = _mano.transform.position;
+                vuelo = false;
+                habilitado = false;
+            }
         }
         else CancelarRegreso();
     }
