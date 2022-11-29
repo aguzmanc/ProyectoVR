@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShootGun : MonoBehaviour
 {
     [Header("Weapon Objects")]
-    [SerializeField] private GameObject bullet_prefab;
+    [SerializeField] private GameObject[] bullet_prefab;
     [SerializeField] private Transform fire_point;
 
     [Header("Weapon Stats")]    
@@ -24,6 +24,7 @@ public class ShootGun : MonoBehaviour
     }
 
     GameObject GetProjectile() {
-        return Instantiate(bullet_prefab, fire_point.position, fire_point.localRotation);
+        int rnd = Random.Range(0, bullet_prefab.Length);
+        return Instantiate(bullet_prefab[rnd], fire_point.position, fire_point.localRotation);
     }
 }
