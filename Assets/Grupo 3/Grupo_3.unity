@@ -2080,8 +2080,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_allowOffhandGrab: 1
-  m_snapPosition: 1
-  m_snapOrientation: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
 --- !u!65 &1355566886
@@ -2095,8 +2095,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0011150618, y: 0.0036623576, z: 0.0042014252}
-  m_Center: {x: 0.00000043906272, y: -0.000875292, z: 0.0005967203}
+  m_Size: {x: 0.0011150618, y: 0.0026626447, z: 0.0028764808}
+  m_Center: {x: 0.00000043906272, y: -0.00037543755, z: 0.0012591836}
+--- !u!65 &1355566887
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355566880}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0011150618, y: 0.0029430466, z: 0.0014531637}
+  m_Center: {x: 0.00000043906272, y: -0.00096193596, z: -0.00093363377}
 --- !u!1001 &1538102555
 PrefabInstance:
   m_ObjectHideFlags: 0
