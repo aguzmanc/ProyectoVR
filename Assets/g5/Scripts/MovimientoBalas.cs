@@ -15,5 +15,10 @@ public class MovimientoBalas : MonoBehaviour
     void Update()
     {
         transform.Translate(0, 0, velocidad * Time.deltaTime);
+        Destroy(this.gameObject, 5f);
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        Destroy(this.gameObject);
     }
 }

@@ -8,8 +8,8 @@ public class BulletAction : MonoBehaviour
     private float velocidad;
     [SerializeField]
     private GameObject[] bullet;
-    [SerializeField]
-    private ParticleSystem particle;
+    //[SerializeField]
+    //private ParticleSystem particle;
     [SerializeField]
     private Transform movimiento;
     private int rango;
@@ -24,7 +24,7 @@ public class BulletAction : MonoBehaviour
     {
         GameObject projectile = AgarrarBala();
         projectile.GetComponent<Bullet>().MovimientoBala(velocidad);
-        Particulas();
+        //Particulas();
     }
 
     GameObject AgarrarBala()
@@ -33,11 +33,11 @@ public class BulletAction : MonoBehaviour
         return Instantiate(bullet[rango], movimiento.position, movimiento.localRotation);
     }
 
-    void Particulas()
+    /*void Particulas()
     {
         ParticleSystem particleSystem = Instantiate(particle, movimiento.position, movimiento.localRotation);
         Destroy(particleSystem.gameObject, particleSystem.main.duration);
-    }
+    }*/
 
     // Update is called once per frame
     void Update()

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1202406760630965672}
   - component: {fileID: 1832693427014023131}
   - component: {fileID: 3353885137044299114}
+  - component: {fileID: 8206654787082322115}
   m_Layer: 0
   m_Name: Balas
   m_TagString: Balas
@@ -62,6 +63,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 50
+--- !u!114 &8206654787082322115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202406760630965675}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324ceed4bff67b341839236eb1cf97a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 0
+  rigidbody: {fileID: 0}
 --- !u!1001 &1202406760707191963
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -825,6 +825,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1553360225}
   - component: {fileID: 1553360226}
+  - component: {fileID: 1553360227}
   m_Layer: 0
   m_Name: Disparador
   m_TagString: Untagged
@@ -861,6 +862,22 @@ MonoBehaviour:
   Balas: {fileID: 1202406760630965675, guid: c39041874fda3464cb0e545bca6661ec, type: 3}
   rangoRotacion: 5.4
   cargada: 0
+--- !u!114 &1553360227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553360224}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106bae35b1fbf3940a5e4d11c9cdc6f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidad: 0
+  bullet:
+  - {fileID: 1202406760630965675, guid: c39041874fda3464cb0e545bca6661ec, type: 3}
+  movimiento: {fileID: 1553360225}
 --- !u!1 &1755744681
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,7 +890,6 @@ GameObject:
   - component: {fileID: 1755744685}
   - component: {fileID: 1755744684}
   - component: {fileID: 1755744683}
-  - component: {fileID: 1755744682}
   - component: {fileID: 1755744687}
   m_Layer: 0
   m_Name: Cube
@@ -882,18 +898,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1755744682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1755744681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55d6f62127f5fd24a8e8d3d5f66a813f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1755744683
 BoxCollider:
   m_ObjectHideFlags: 0
