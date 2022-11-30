@@ -80,7 +80,7 @@ public class MjolnirActions : MonoBehaviour
     }
     private void VueloRegresoMartillo(){
         direccion = neutro;
-        transform.Translate(new Vector3(0f, 0,(velocidad * 2) * Time.deltaTime),Space.Self);
+        transform.Translate(new Vector3(0f, 0,velocidad  * Time.deltaTime),Space.Self);
     }
     private void CancelarVuelo(){
         direccion = neutro;

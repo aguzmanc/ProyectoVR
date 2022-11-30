@@ -1274,7 +1274,7 @@ MonoBehaviour:
   regreso: 0
   rot: {x: 0, y: 0, z: 0, w: 0}
   _mano: {fileID: 2145429215}
-  _camara: {fileID: 2145506061}
+  _camara: {fileID: 2145506057}
   distancia: 1
 --- !u!1001 &1154688494
 PrefabInstance:
