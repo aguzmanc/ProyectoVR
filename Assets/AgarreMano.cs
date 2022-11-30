@@ -6,7 +6,8 @@ public class AgarreMano : MonoBehaviour
 {
     public bool agarreOk;
     public GameObject child;
-    public Transform parent;
+    public Transform parentOriginal;
+    public Transform parentSustitute;
 
     bool agarreImput;
     void Start()
@@ -27,11 +28,11 @@ public class AgarreMano : MonoBehaviour
     /// <param name="other">The other Collider involved in this collision.</param>
     private void OnTriggerEnter(Collider other)
     {
-        if(agarreImput)
+        if(agarreImput && other.CompareTag("Arma"))
         {
-            child.transform.SetParent(parent);
-            other.transform.localPosition = new Vector3(0,0,0);
-            other.transform.localRotation = Quaternion.identity;
+            child.transform.SetParent(parentSustitute);
+            child.transform.localPosition = new Vector3(0,0,0);
+            child.transform.localRotation = Quaternion.identity;
         }
     }
     /// <summary>
@@ -42,7 +43,9 @@ public class AgarreMano : MonoBehaviour
     {
         if(agarreImput == false)
         {
-            child.transform.SetParent(null);
+            child.transform.SetParent(parentOriginal);
+            child.transform.localPosition = new Vector3(0,0,0);
+            child.transform.localRotation = Quaternion.identity;
         }
     }
 }
