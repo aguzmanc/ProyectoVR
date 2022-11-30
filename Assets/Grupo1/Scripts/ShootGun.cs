@@ -17,12 +17,16 @@ public class ShootGun : MonoBehaviour
         if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger)) {
             Shoot();
         }
+
+        // if (Input.GetButtonDown("Fire1")) {
+        //     Shoot();
+        // }
     }
 
     void Shoot() {
-        GameObject projectile = GetProjectile(); 
-        FlashEffect();       
+        GameObject projectile = GetProjectile();            
         projectile.GetComponent<Projectile>().MoveProjectile(projectile_speed);
+        FlashEffect();
     }
 
     GameObject GetProjectile() {
@@ -32,7 +36,7 @@ public class ShootGun : MonoBehaviour
 
     void FlashEffect() {
         ParticleSystem ps = Instantiate(fx_flash, fire_point.position, fire_point.localRotation);
-        Destroy(ps, ps.main.duration);
+        Destroy(ps.gameObject, ps.main.duration);
     }
 
 }
