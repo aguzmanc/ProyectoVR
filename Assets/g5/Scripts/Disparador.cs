@@ -9,27 +9,21 @@ public class Disparador : MonoBehaviour
     [Range(0, 20)]
     public float rangoRotacion = 3;
     // Start is called before the first frame update
-    IEnumerator Start()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(tiempo);
-
-            if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
-            {
-                GameObject bullet =
-                    (GameObject)Instantiate(Balas,
-                                transform.position,
-                                transform.rotation);
-                float rotY = Random.Range(-rangoRotacion, rangoRotacion);
-                float rotX = Random.Range(-rangoRotacion, rangoRotacion);
-                bullet.transform.Rotate(rotX, rotY, 0);
-            }
-        }
-    }
+  
     // Update is called once per frame
     void Update()
     {
-        
+
+        if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
+        {
+            GameObject bullet =
+                (GameObject)Instantiate(Balas,
+                            transform.position,
+                            transform.rotation);
+            float rotY = Random.Range(-rangoRotacion, rangoRotacion);
+            float rotX = Random.Range(-rangoRotacion, rangoRotacion);
+            bullet.transform.Rotate(rotX, rotY, 0);
+        }
+
     }
 }
