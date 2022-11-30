@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -478,7 +478,7 @@ MonoBehaviour:
   - {fileID: 6405883797885202887, guid: 89bab84d80fc26f42bdb4a1a413ea616, type: 3}
   - {fileID: 6405883797885202887, guid: dbd7dc52f892bb34d9c2fe44efaa1cbb, type: 3}
   - {fileID: 4855460373270170479, guid: 946042cab9b5c5148bb3ee491ff2eb6d, type: 3}
-  fx_flash: {fileID: 0}
+  fx_flash: {fileID: 6142059440848899190, guid: 47e1fffa376d0f04ebac669ef35fc8db, type: 3}
   fire_point: {fileID: 1671967953}
   projectile_speed: 700
 --- !u!54 &202648614
@@ -1085,6 +1085,7 @@ GameObject:
   - component: {fileID: 505662754}
   - component: {fileID: 505662756}
   - component: {fileID: 505662755}
+  - component: {fileID: 505662757}
   m_Layer: 3
   m_Name: Grap
   m_TagString: Untagged
@@ -1137,6 +1138,22 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &505662757
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505662753}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &517021874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1761,7 +1778,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781251199}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2420568, y: 1.3391025, z: 0.219}
+  m_LocalPosition: {x: 1.2420568, y: 1.364, z: 0.219}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 202648621}
@@ -1836,6 +1853,7 @@ GameObject:
   - component: {fileID: 797615637}
   - component: {fileID: 797615639}
   - component: {fileID: 797615638}
+  - component: {fileID: 797615640}
   m_Layer: 3
   m_Name: Barril
   m_TagString: Untagged
@@ -1888,6 +1906,22 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &797615640
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797615636}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &814087141 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3027770088981722075, guid: 948b0f20a9e9e064780ff35dc1990603, type: 3}
@@ -3541,13 +3575,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671967952}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.016, y: 0.072, z: -0.516}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 202648621}
   m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1689307968
 GameObject:
   m_ObjectHideFlags: 0

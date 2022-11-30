@@ -30,9 +30,16 @@ public class AgarreMano : MonoBehaviour
     {
         if(agarreImput && other.CompareTag("Arma"))
         {
+<<<<<<< HEAD
             child.transform.SetParent(parentSustitute);
             child.transform.localPosition = new Vector3(0,0,0);
             child.transform.localRotation = Quaternion.identity;
+=======
+            child.transform.SetParent(parent);
+            other.transform.localPosition = new Vector3(0,0,0);
+            other.transform.localRotation = Quaternion.identity;
+            Debug.Log("Agarre");
+>>>>>>> 3ce5a7bb0a6ce46e520cd6e771ef4e5c2b7e52d9
         }
     }
     /// <summary>
