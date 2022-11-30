@@ -4,7 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
+  - limitRight
+  - limitLeft
+=======
   - Balas
+>>>>>>> 663a08b94f2304b5b366d871f9ed1807237cb825
   layers:
   - Default
   - TransparentFX
