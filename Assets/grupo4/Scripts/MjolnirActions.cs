@@ -38,15 +38,14 @@ public class MjolnirActions : MonoBehaviour
         if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch) > 0) simulacionAgarrado = true;
         else simulacionAgarrado = false;
         agarrado = (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch) > 0);
-        if(!agarrado && transform.position.y >= 1.4f) vuelo = true;
-        if(vuelo && !llamado) VueloMartillo();
         if(agarrado) habilitado = true;
         if(habilitado) rigidbody.isKinematic = true;
         else rigidbody.isKinematic = false;
-        if(!llamado && ((!agarrado && transform.position.y <= 0.6f) || transform.position.x >= 10 || transform.position.x <= -10 || transform.position.z >= 10 || transform.position.z <= -10))
-        {
-            CancelarVuelo();
-        }   
+        if(!llamado && !agarrado && transform.position.y <= 0.6f) CancelarVuelo();
+        if(!llamado && (transform.position.x >= 200 || transform.position.x <= -200 || transform.position.z >= 200 || transform.position.z <= -200))
+            vuelo = false;
+        else if(!agarrado && transform.position.y >= 1.4f) vuelo = true;
+        if(vuelo && !llamado) VueloMartillo();
         if(simulacionAgarrado)
         {
             if(VerificadoRegreso())
@@ -73,16 +72,15 @@ public class MjolnirActions : MonoBehaviour
 
     private void VueloMartillo(){
         if(direccion == neutro){
-            direccion = _camara.forward;            
+            direccion = _camara.forward;
+            transform.forward = direccion;
+            transform.Rotate(90 , 0 , 0);
         }
-        transform.forward = direccion;
-        
-        
         transform.Translate(new Vector3(0f,velocidad * Time.deltaTime,0f),Space.Self);
     }
     private void VueloRegresoMartillo(){
         direccion = neutro;
-        transform.Translate(new Vector3(0f, 0,velocidad * Time.deltaTime),Space.Self);
+        transform.Translate(new Vector3(0f, 0,(velocidad * 2) * Time.deltaTime),Space.Self);
     }
     private void CancelarVuelo(){
         direccion = neutro;
@@ -113,4 +111,9 @@ public class MjolnirActions : MonoBehaviour
       yield return new WaitForSeconds(seconds);
       regreso = true;
     } 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Terreno")
+        CancelarVuelo();
+    }
 }
