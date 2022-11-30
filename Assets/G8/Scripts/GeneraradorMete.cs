@@ -9,8 +9,9 @@ public class GeneraradorMete : MonoBehaviour
     public GameObject[] huevos;
     float tiempo = 4f;
     public GameObject enemigoNormal;
+    public GameObject explometecae;
     // Start is called before the first frame update
-    
+
     IEnumerator Start()
     {
 
@@ -47,6 +48,8 @@ public class GeneraradorMete : MonoBehaviour
                 GameObject enemigo =
                 (GameObject)Instantiate(huevos[huevoramdon], new Vector3(other.transform.position.x+Random.Range(-5,5), 0, other.transform.position.z+Random.Range(-5, 5)), other.transform.rotation);
                 Destroy(other.gameObject);
+                
+                
             }
             
 
@@ -55,25 +58,41 @@ public class GeneraradorMete : MonoBehaviour
         {      
                 GameObject enemigo =
                 (GameObject)Instantiate(enemigoNormal, new Vector3(other.transform.position.x , 0, other.transform.position.z ), other.transform.rotation);
-                Destroy(other.gameObject);    
+                Destroy(other.gameObject);
+                GameObject explision =
+                (GameObject)Instantiate(explometecae, new Vector3(other.transform.position.x, 0, other.transform.position.z), other.transform.rotation);
+
+
         }
         else if (other.tag == "MeteoritoVerde")
         {
             GameObject enemigo =
             (GameObject)Instantiate(enemigos[0], new Vector3(other.transform.position.x, 0, other.transform.position.z), other.transform.rotation);
             Destroy(other.gameObject);
+            GameObject explision =
+            (GameObject)Instantiate(explometecae, new Vector3(other.transform.position.x, 0, other.transform.position.z), other.transform.rotation);
+
+
         }
         else if (other.tag == "MeteoritoRojo")
         {
             GameObject enemigo =
             (GameObject)Instantiate(enemigos[1], new Vector3(other.transform.position.x, 0, other.transform.position.z), other.transform.rotation);
             Destroy(other.gameObject);
+            GameObject explision =
+            (GameObject)Instantiate(explometecae, new Vector3(other.transform.position.x, 0, other.transform.position.z), other.transform.rotation);
+
+
         }
         else if (other.tag == "MeteoritoMorado")
         {
             GameObject enemigo =
             (GameObject)Instantiate(enemigos[2], new Vector3(other.transform.position.x, 0, other.transform.position.z), other.transform.rotation);
             Destroy(other.gameObject);
+            GameObject explision =
+            (GameObject)Instantiate(explometecae, new Vector3(other.transform.position.x, 0, other.transform.position.z), other.transform.rotation);
+
+
         }
 
 

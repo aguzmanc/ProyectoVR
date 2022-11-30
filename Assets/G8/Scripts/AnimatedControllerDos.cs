@@ -13,6 +13,7 @@ public class AnimatedControllerDos : MonoBehaviour
     private static readonly int AttackHash = Animator.StringToHash("Stab Attack");
     private static readonly int HitHash = Animator.StringToHash("Take Damage");
     private static readonly int IsDeadHash = Animator.StringToHash("Die");
+    private static readonly int JumpHash = Animator.StringToHash("Jump");
 
     public Seguidor seguidor;
     GameObject jugador;
@@ -20,8 +21,10 @@ public class AnimatedControllerDos : MonoBehaviour
 
     private void Start()
     {
+        
         jugador = GameObject.FindGameObjectWithTag("Jugador");
         seguidor = gameObject.GetComponentInParent<Seguidor>();
+        StartCoroutine(InicioSaltarin());
         if (gameObject.tag=="MetalonRojo")
         {
             life = 400;
@@ -57,6 +60,17 @@ public class AnimatedControllerDos : MonoBehaviour
         _animator.SetBool(IsDeadHash, true);  
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
+    }
+    IEnumerator InicioSaltarin()
+    {
+        _animateWhenRun = false;
+        seguidor.moverse = false;
+        _animator.SetBool(MovingHash, false);
+        _animator.SetBool(JumpHash, true);
+        yield return new WaitForSeconds(1f);
+        _animator.SetBool(MovingHash, true);
+        seguidor.moverse = true;
+        _animateWhenRun = true;
     }
 
     private void OnTriggerEnter(Collider other)

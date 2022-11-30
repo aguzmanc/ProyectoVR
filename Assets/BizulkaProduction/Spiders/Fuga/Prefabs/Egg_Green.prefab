@@ -172,6 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1927246636466814438}
   - component: {fileID: 876049672133166357}
+  - component: {fileID: 6300768259219204653}
   m_Layer: 0
   m_Name: Egg_Green
   m_TagString: HuevoVerde
@@ -215,6 +216,19 @@ MonoBehaviour:
   - {fileID: 8187015543198388644, guid: 6b12735268a70114186cb0ea66d06763, type: 3}
   - {fileID: 7978624207812556279, guid: 7a1e02b4e3e3cde4da6a58f6c596f9b7, type: 3}
   - {fileID: 7122654101855521591, guid: 91d4749f098c66442b36767a17342765, type: 3}
+--- !u!114 &6300768259219204653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927246636466840006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4201de89f46ae784485a126f9d0f1078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiempo: 2
 --- !u!1001 &4933252260606624574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -234,6 +248,10 @@ PrefabInstance:
       propertyPath: m_Mesh2
       value: 
       objectReference: {fileID: 4300000, guid: 5e321b1e9321cee4299a32d921c886b4, type: 3}
+    - target: {fileID: 9147366467137067797, guid: f07d2d7484b62c444a1afc522065f523, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9147366467137067799, guid: f07d2d7484b62c444a1afc522065f523, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -281,6 +299,10 @@ PrefabInstance:
     - target: {fileID: 9147366467137067802, guid: f07d2d7484b62c444a1afc522065f523, type: 3}
       propertyPath: m_Name
       value: Egg_Particles_Shells
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147366467630307465, guid: f07d2d7484b62c444a1afc522065f523, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f07d2d7484b62c444a1afc522065f523, type: 3}
