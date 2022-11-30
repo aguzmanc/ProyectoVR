@@ -17,7 +17,7 @@ public class Disparador : MonoBehaviour
         {
             yield return new WaitForSeconds(tiempo);
             
-            if(Input.GetMouseButton(0)){
+            if(OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger)> 0.5f){
                 GameObject laser = 
                     (GameObject)Instantiate(prototipoLaser, transform.position, transform.rotation);
 
