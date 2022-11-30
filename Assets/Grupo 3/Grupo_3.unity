@@ -1086,11 +1086,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 804a94a6e6412f44b99f49a80a332974, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.083
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 804a94a6e6412f44b99f49a80a332974, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.205
+      value: 3.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 804a94a6e6412f44b99f49a80a332974, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1151,7 +1151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.19
+      value: 0.889
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1309,7 +1309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prototipoLaser: {fileID: 230556430}
   tiempo: 0.3
-  rangoRotacion: 3
+  rangoRotacion: 0
 --- !u!54 &1355566884
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1339,8 +1339,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_allowOffhandGrab: 1
-  m_snapPosition: 0
-  m_snapOrientation: 0
+  m_snapPosition: 1
+  m_snapOrientation: 1
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
 --- !u!65 &1355566886
