@@ -32,6 +32,7 @@ public class AgarreMano : MonoBehaviour
             child.transform.SetParent(parent);
             other.transform.localPosition = new Vector3(0,0,0);
             other.transform.localRotation = Quaternion.identity;
+            Debug.Log("Agarre");
         }
     }
     /// <summary>
