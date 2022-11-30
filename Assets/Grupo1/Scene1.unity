@@ -4388,6 +4388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736aa8602fad7f8409b7ecdd7b71b749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agarreOk: 0
   child: {fileID: 202648606}
   parent: {fileID: 764426246}
 --- !u!1001 &2052454697
