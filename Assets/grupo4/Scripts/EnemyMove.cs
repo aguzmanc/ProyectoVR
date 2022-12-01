@@ -46,7 +46,7 @@ public class EnemyMove : MonoBehaviour
                 agente.enabled = false;
                 muerte = true;
                 StartCoroutine(RestarPuntos(false));
-                FindObjectOfType<ControladorJuego>().SumarPuntaje(1);
+                FindObjectOfType<ControladorJuego>().SumarPuntaje(5);
                 animator.SetBool("Atack", false);
                 animator.SetBool("Death", true);
                 atack = false;

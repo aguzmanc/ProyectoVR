@@ -555,7 +555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &655806565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,7 +897,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 2147015889}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -964,8 +964,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.26159763, y: 0.1560018, z: 0.15595663}
-  m_Center: {x: 0.0007878542, y: 0.25567853, z: -0.0012851357}
+  m_Size: {x: 0.306318, y: 0.16718185, z: 0.20227426}
+  m_Center: {x: 0.0007878691, y: 0.26126856, z: -0.003680855}
 --- !u!4 &1136724810
 Transform:
   m_ObjectHideFlags: 0
@@ -1188,7 +1188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1175844603
 MonoBehaviour:
   m_ObjectHideFlags: 0
