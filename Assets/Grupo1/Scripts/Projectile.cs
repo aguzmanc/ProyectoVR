@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
 
     public void MoveProjectile(float projectile_speed) {
         rb = GetComponent<Rigidbody>();        
-        rb.AddForce(transform.forward * projectile_speed);
+        rb.AddRelativeForce(transform.forward * projectile_speed);
         Destroy(this.gameObject, 5f);
     }
 
