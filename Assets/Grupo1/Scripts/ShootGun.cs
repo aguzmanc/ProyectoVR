@@ -31,11 +31,11 @@ public class ShootGun : MonoBehaviour
 
     GameObject GetProjectile() {
         int rnd = Random.Range(0, bullet_prefab.Length);
-        return Instantiate(bullet_prefab[rnd], fire_point.position, fire_point.localRotation);
+        return Instantiate(bullet_prefab[rnd], fire_point.position, fire_point.rotation);
     }
 
     void FlashEffect() {
-        ParticleSystem ps = Instantiate(fx_flash, fire_point.position, fire_point.localRotation);
+        ParticleSystem ps = Instantiate(fx_flash, fire_point.position, fire_point.rotation);
         Destroy(ps.gameObject, ps.main.duration);
     }
 
