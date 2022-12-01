@@ -7,6 +7,7 @@ TagManager:
   - ManoDerecha
   - Mjolnir
   - Terreno
+  - Mano
   layers:
   - Default
   - TransparentFX
