@@ -13,14 +13,23 @@ public class AnimationsController : MonoBehaviour
 
     public SeguidorDos seguidor;
     GameObject jugador;
+    GameObject generador;
+    GeneraradorMete gene;
     public float life;
+    GameObject padre;
+    float delay = 0.1f;
+    float elapsed;
 
 
 
     private void Start()
     {
+        padre = gameObject.transform.parent.gameObject;
         jugador = GameObject.FindGameObjectWithTag("Jugador");
         seguidor = gameObject.GetComponentInParent<SeguidorDos>();
+        generador = GameObject.FindGameObjectWithTag("Detector");
+        gene = generador.GetComponentInParent<GeneraradorMete>();
+        gene.enemigosContados = gene.enemigosContados +1;
         if (gameObject.tag == "Aranabb")
         {
             life = 50;
@@ -64,32 +73,15 @@ public class AnimationsController : MonoBehaviour
         _animator.SetBool(MovingHash, false);
         _animator.SetBool(IsDeadHash, true);
         yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
+        Destroy(padre);
+        gene.enemigosContados = gene.enemigosContados - 1;
     }
 
 
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if (other.tag == "RashoLaser")
-        {
-
-            life = life - 50;
-            if (life > 0)
-            {
-                StartCoroutine(RecibirGolpeVivo());
-            }
-            else
-            {
-                StartCoroutine(UltimoAliento());
-
-
-            }
-
-
-        }
-        else if (other.tag == "Katanazo")
+        if (other.tag == "Katanazo")
         {
 
             life = life - 100;
@@ -107,26 +99,50 @@ public class AnimationsController : MonoBehaviour
 
 
     }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "RashoLaser")
+        {
+            elapsed += Time.deltaTime;
+            if (elapsed >= delay)
+            {
+                life = life - 5;
+                if (life > 0)
+                {
+                    
+                    StartCoroutine(RecibirGolpeVivo());
+                    elapsed = 0;
+                }
+                else
+                {
+                    StartCoroutine(UltimoAliento());
+                }
 
-   
+            }
+
+        }
+
+        
+    }
+
+
 
     private void Update()
     {
 
 
-        if (_animateWhenRun)
-        {
+        
             var tr = transform;
             var position = tr.position;
             float distancia = CalculateDistanceInSpace();
 
-            if (distancia > 2.5f)
+            if (distancia > 2.5f && _animateWhenRun)
             {
 
                 _animator.SetBool(MovingHash, true);
 
             }
-            else
+            else if (distancia <= 2.5f && _animateWhenRun)
             {
                 _animator.SetBool(MovingHash, false);
                 _animator.SetBool(AttackHash, true);
@@ -134,7 +150,7 @@ public class AnimationsController : MonoBehaviour
             }
 
 
-        }
+        
     }
     private float CalculateDistanceInSpace()
     {

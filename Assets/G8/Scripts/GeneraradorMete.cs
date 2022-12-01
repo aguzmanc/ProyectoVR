@@ -10,14 +10,19 @@ public class GeneraradorMete : MonoBehaviour
     float tiempo = 4f;
     public GameObject enemigoNormal;
     public GameObject explometecae;
+    public int limiteEnemigos;
+    public int enemigosContados;
     // Start is called before the first frame update
 
     IEnumerator Start()
     {
-
+        limiteEnemigos = 8;
         while (true)
         {
-            Generar();
+            if (enemigosContados<=limiteEnemigos)
+            {
+                Generar();
+            }   
             yield return new WaitForSeconds(tiempo);
             
 

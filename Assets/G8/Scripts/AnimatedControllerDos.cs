@@ -16,26 +16,39 @@ public class AnimatedControllerDos : MonoBehaviour
     private static readonly int JumpHash = Animator.StringToHash("Jump");
 
     public Seguidor seguidor;
+    GameObject generador;
+    GeneraradorMete gene;
     GameObject jugador;
     public float life;
+    float DistanciaAtaque;
+    GameObject padre;
+    float delay=0.1f;
+    float elapsed;
 
     private void Start()
     {
         
         jugador = GameObject.FindGameObjectWithTag("Jugador");
         seguidor = gameObject.GetComponentInParent<Seguidor>();
+        generador= GameObject.FindGameObjectWithTag("Detector");
+        gene = generador.GetComponentInParent<GeneraradorMete>();
+
+        padre = gameObject.transform.parent.gameObject;
         StartCoroutine(InicioSaltarin());
         if (gameObject.tag=="MetalonRojo")
         {
             life = 400;
+            DistanciaAtaque = 5f;
         }
         else if (gameObject.tag == "MetalonVerde")
         {
             life = 300;
+            DistanciaAtaque = 5f;
         }
         else if (gameObject.tag == "MetalonMorado")
         {
             life = 600;
+            DistanciaAtaque = 6f;
         }
     }
     IEnumerator RecibirGolpeVivo()
@@ -59,7 +72,18 @@ public class AnimatedControllerDos : MonoBehaviour
         _animator.SetBool(MovingHash, false);
         _animator.SetBool(IsDeadHash, true);  
         yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
+        Destroy(padre);
+        gene.enemigosContados = gene.enemigosContados - 1;
+    }
+    IEnumerator UltimoAlientoRasho()
+    {
+        _animateWhenRun = false;
+        seguidor.moverse = false;
+        _animator.SetBool(MovingHash, false);
+        _animator.SetBool(IsDeadHash, true);
+        yield return new WaitForSeconds(2f);
+        Destroy(padre);
+        gene.enemigosContados = gene.enemigosContados - 1;
     }
     IEnumerator InicioSaltarin()
     {
@@ -71,34 +95,20 @@ public class AnimatedControllerDos : MonoBehaviour
         _animator.SetBool(MovingHash, true);
         seguidor.moverse = true;
         _animateWhenRun = true;
+        gene.enemigosContados = gene.enemigosContados + 1;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         
-        if (other.tag == "RashoLaser")
+        
+        if (other.tag=="Katanazo")
         {
             
-            life = life - 50;
+            
             if (life > 0)
             {
-                StartCoroutine(RecibirGolpeVivo());
-            }
-            else
-            {
-                StartCoroutine(UltimoAliento());
-
-                
-            }
-            
-
-        }
-        else if (other.tag=="Katanazo")
-        {
-            
-            life = life - 100;
-            if (life > 0)
-            {
+                life = life - 100;
                 StartCoroutine(RecibirGolpeVivo());
             }
             else
@@ -111,26 +121,48 @@ public class AnimatedControllerDos : MonoBehaviour
 
 
     }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "RashoLaser")
+        {
+            elapsed += Time.deltaTime;
+            if (elapsed >= delay)
+            {
+                life = life - 10;
+                if (life > 0)
+                {
+                    
+                    StartCoroutine(RecibirGolpeVivo());
+                    elapsed = 0;
+                }
+                else
+                {
+                    StartCoroutine(UltimoAlientoRasho());
+                }
 
- 
+            }
+            
+        }
+    }
+
+
 
     private void Update()
     {
 
 
-        if (_animateWhenRun)
-        {
+        
             var tr = transform;
             var position = tr.position;
             float distancia = CalculateDistanceInSpace();
 
-            if (distancia > 6f)
+            if (distancia > DistanciaAtaque && _animateWhenRun)
             {
                 
                 _animator.SetBool(MovingHash, true);
                 
             }
-            else
+            else if(distancia <= DistanciaAtaque && _animateWhenRun)
             {
                 _animator.SetBool(MovingHash, false);
                 _animator.SetBool(AttackHash, true);
@@ -138,7 +170,7 @@ public class AnimatedControllerDos : MonoBehaviour
             }
 
             
-        }
+        
     }
     private float CalculateDistanceInSpace()
     {

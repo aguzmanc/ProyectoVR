@@ -21,6 +21,8 @@ TagManager:
   - AranaCafe
   - AranaVerde
   - AranaRoja
+  - Detector
+  - RashoLaser
   layers:
   - Default
   - TransparentFX
