@@ -830,7 +830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agarrado: 0
-  velocidad: 0
+  velocidad: 5
   rigidbody: {fileID: 0}
   vuelo: 0
   simulacionAgarrado: 0
