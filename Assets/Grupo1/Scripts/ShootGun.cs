@@ -14,9 +14,9 @@ public class ShootGun : MonoBehaviour
     
     void Update()
     {
-        // if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger)) {
-        //     Shoot();
-        // }
+        if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger)) {
+            Shoot();
+        }
 
         if (Input.GetButtonDown("Fire1")) {
             Shoot();
