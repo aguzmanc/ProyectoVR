@@ -15,8 +15,8 @@ public class DetectorBoton : MonoBehaviour
         if(other.tag == "Mano")
         {
             boton.Presionar();
-        }       
-
+        }           
+        
     }
     private void OnTriggerExit(Collider other) {
 
