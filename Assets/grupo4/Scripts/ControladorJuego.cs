@@ -19,6 +19,7 @@ public class ControladorJuego : MonoBehaviour
     {
         _juegoIniciado = false;
         puntajeTotal = 0;
+        MostrarPuntaje(puntajeTotal);
     }
 
     void Update()
@@ -52,6 +53,15 @@ public class ControladorJuego : MonoBehaviour
     {
         puntajeTotal +=puntaje;
         MostrarPuntaje(puntajeTotal);
+    }
+
+    public void RestarPuntaje(int puntaje)
+    {
+        if(puntajeTotal>0){
+            puntajeTotal -=puntaje;
+            MostrarPuntaje(puntajeTotal);
+        }
+        
     }
     public void MostrarPuntaje(int puntajeTotal)
     {
