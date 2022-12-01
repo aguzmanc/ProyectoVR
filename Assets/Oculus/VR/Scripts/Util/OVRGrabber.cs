@@ -161,10 +161,10 @@ public class OVRGrabber : MonoBehaviour
             GetComponent<Rigidbody>().MoveRotation(destRot);
         }
 
-        if (!m_parentHeldObject)
+        /*if (!m_parentHeldObject)
         {
             MoveGrabbedObject(destPos, destRot);
-        }
+        }*/
 
         m_lastPos = transform.position;
         m_lastRot = transform.rotation;

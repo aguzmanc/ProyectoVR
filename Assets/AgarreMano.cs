@@ -8,17 +8,44 @@ public class AgarreMano : MonoBehaviour
     public GameObject child;
     public Transform parentOriginal;
     public Transform parentSustitute;
-    bool agarreImput;
+    
+    
+    public bool cerca;
+    public bool agarrado;
+    public bool presionado;
     void Update()
     {
-        agarreImput = OVRInput.Get(OVRInput.Button.SecondaryHandTrigger);
+        presionado = OVRInput.Get(OVRInput.Button.SecondaryHandTrigger);
+
+        if(presionado && cerca && !agarrado)
+        {
+            agarrado = true;
+            child.transform.SetParent(parentSustitute);
+            child.transform.localPosition = new Vector3(0,0,0);
+            child.transform.localRotation = Quaternion.identity;
+            Debug.Log("Agarrado");
+        }
+        
+
+        if(presionado == false && agarrado == true && cerca== true)
+        {
+            agarrado = false;
+            child.transform.SetParent(parentOriginal);
+            child.transform.localPosition = new Vector3(0,0,0);
+            child.transform.localRotation = Quaternion.identity;
+            Debug.Log("soltado");
+        }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Arma"))
+        {
+            cerca = true;
+        }   
+        
     }
 
-    /// <summary>
-    /// OnTriggerEnter is called when the Collider other enters the trigger.
-    /// </summary>
-    /// <param name="other">The other Collider involved in this collision.</param>
-    private void OnTriggerStay(Collider other)
+    /*private void OnTriggerStay(Collider other)
     {
         if(agarreImput && other.CompareTag("Arma"))
         {
@@ -26,14 +53,13 @@ public class AgarreMano : MonoBehaviour
             child.transform.localPosition = new Vector3(0,0,0);
             child.transform.localRotation = Quaternion.identity;
         }
-    }
+    }*/
+    
     private void OnTriggerExit(Collider other)
     {
-        if(agarreImput == false)
+        if(other.CompareTag("Arma"))
         {
-            child.transform.SetParent(parentOriginal);
-            child.transform.localPosition = new Vector3(0,0,0);
-            child.transform.localRotation = Quaternion.identity;
-        }
+            cerca = false;
+        }  
     }
 }
