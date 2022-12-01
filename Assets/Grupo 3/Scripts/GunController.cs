@@ -7,11 +7,17 @@ public class GunController : MonoBehaviour
     public GameObject dart;
     public float dartSpeed =10.0f;
     private bool fired = false;
+    AudioSource disparobalas;
+
+    void Start() {
+        disparobalas = GetComponent<AudioSource>();    
+    }
     void Update()
     {
         if(OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger)> 0.5f && !fired )
         {
             FireDart();
+            disparobalas.Play();
             fired = true;
         }
         else if(OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger)> 0.5f)
