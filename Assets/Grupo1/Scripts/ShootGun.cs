@@ -10,17 +10,19 @@ public class ShootGun : MonoBehaviour
     [SerializeField] private Transform fire_point;
 
     [Header("Weapon Stats")]    
-    [SerializeField] private float projectile_speed = 200f;    
+    [SerializeField] private float projectile_speed = 200f; 
+
+    [SerializeField] AgarreMano agarre;   
     
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger)) {
+        if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger) && agarre.agarrado) {
             Shoot();
         }
 
-        if (Input.GetButtonDown("Fire1")) {
+        /*if (Input.GetButtonDown("Fire1")) {
             Shoot();
-        }
+        }*/
     }
 
     void Shoot() {
