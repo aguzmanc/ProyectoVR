@@ -9,13 +9,11 @@ public class GunController : MonoBehaviour
     private bool fired = false;
     AudioSource disparobalas;
 
-    void Start() {
-        disparobalas = GetComponent<AudioSource>();    
-    }
     void Update()
     {
-        if(OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger)> 0.5f && !fired )
+        if(OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger)> 0.9f && !fired )
         {
+            disparobalas = GetComponent<AudioSource>();    
             FireDart();
             disparobalas.Play();
             fired = true;
