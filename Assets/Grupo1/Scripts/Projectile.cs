@@ -8,7 +8,8 @@ public class Projectile : MonoBehaviour
 
     public void MoveProjectile(float projectile_speed) {
         rb = GetComponent<Rigidbody>();        
-        rb.velocity = new Vector3(0f, 0f, projectile_speed);                
+        rb.velocity = /*new Vector3(0f, 0f, projectile_speed)*/ 
+            projectile_speed * transform.forward;                
                 
         Destroy(this.gameObject, 5f);
     }    
