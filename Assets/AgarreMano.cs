@@ -8,11 +8,11 @@ public class AgarreMano : MonoBehaviour
     public GameObject child;
     public Transform parentOriginal;
     public Transform parentSustitute;
-    
-    
+        
     public bool cerca;
     public bool agarrado;
     public bool presionado;
+
     void Update()
     {
         presionado = OVRInput.Get(OVRInput.Button.SecondaryHandTrigger);
@@ -33,6 +33,7 @@ public class AgarreMano : MonoBehaviour
             child.transform.SetParent(parentOriginal);
             child.transform.localPosition = new Vector3(0,0,0);
             child.transform.localRotation = Quaternion.identity;
+            child.GetComponentInChildren<ShootGun>().ResetAmmunation();
             Debug.Log("soltado");
         }
     }
