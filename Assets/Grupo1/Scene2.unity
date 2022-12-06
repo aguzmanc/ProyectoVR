@@ -5285,6 +5285,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c84f45ebe9712e4dbd81f4dd9ff04a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cerca: 0
+  agarrado: 0
+  presionado: 0
+  parentOriginal: {fileID: 2031416041}
+  parentSustitute: {fileID: 797615637}
 --- !u!1 &2031253385
 GameObject:
   m_ObjectHideFlags: 0
