@@ -9,7 +9,7 @@ public class MjolnirActions : MonoBehaviour
     [SerializeField]
     float velocidad = 50;
     [SerializeField]
-    Rigidbody rigidbody;
+    private Rigidbody rigidbody;
     [SerializeField]
     bool vuelo, simulacionAgarrado, habilitado, llamado, couroutineStarted, regreso;
     [SerializeField]
@@ -20,6 +20,7 @@ public class MjolnirActions : MonoBehaviour
     float distancia = 1f;
     Vector3 direccion;
     Vector3 neutro = new Vector3(0,0,0);
+    AudioSource audio;
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -30,12 +31,13 @@ public class MjolnirActions : MonoBehaviour
         couroutineStarted = false;
         regreso = false;
         direccion = neutro;
+        audio = GetComponent<AudioSource>();
     }
     
     void Update()
     {
         Debug.DrawLine(_camara.position, _camara.forward * 50, Color.blue);
-        if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch) > 0) simulacionAgarrado = true;
+        if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0) simulacionAgarrado = true;
         else simulacionAgarrado = false;
         agarrado = (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch) > 0);
         if(agarrado) habilitado = true;
@@ -44,7 +46,7 @@ public class MjolnirActions : MonoBehaviour
         if(!llamado && !agarrado && transform.position.y <= 0.6f) CancelarVuelo();
         if(!llamado && (transform.position.x >= 200 || transform.position.x <= -200 || transform.position.z >= 200 || transform.position.z <= -200))
             vuelo = false;
-        else if(!agarrado && transform.position.y >= 1.4f) vuelo = true;
+        else if(!agarrado && transform.position.y >= 1.1f) vuelo = true;
         if(vuelo && !llamado) VueloMartillo();
         if(simulacionAgarrado)
         {
@@ -75,8 +77,9 @@ public class MjolnirActions : MonoBehaviour
             direccion = _camara.forward;
             transform.forward = direccion;
             transform.Rotate(90 , 0 , 0);
+            audio.Play();
         }
-        transform.Translate(new Vector3(0f,velocidad * Time.deltaTime,0f),Space.Self);
+        transform.Translate(new Vector3(0f,velocidad * Time.deltaTime,0f),Space.Self);        
     }
     private void VueloRegresoMartillo(){
         direccion = neutro;

@@ -12,7 +12,7 @@ public class SpawnEnemys : MonoBehaviour
     bool iniciado;
     int numeroRandom;
     void Start(){
-        numeroRandom = Random.Range(2, 8);
+        numeroRandom = Random.Range(2, 5);
     }
     void Update()
     {
@@ -20,7 +20,7 @@ public class SpawnEnemys : MonoBehaviour
         if(iniciado){
             if(couroutineStarted){
                 StartCoroutine(EsperaSegundos(numeroRandom));
-                numeroRandom = Random.Range(12, 17);
+                numeroRandom = Random.Range(8, 15);
             }
         }
     }

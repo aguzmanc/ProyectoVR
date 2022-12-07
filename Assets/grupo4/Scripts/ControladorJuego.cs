@@ -18,6 +18,7 @@ public class ControladorJuego : MonoBehaviour
     void Start()
     {
         _juegoIniciado = false;
+        
         puntajeTotal = 0;
         MostrarPuntaje(puntajeTotal);
     }
@@ -76,6 +77,10 @@ public class ControladorJuego : MonoBehaviour
     public void IniciarJuego()
     {
         _juegoIniciado = true;
+        if (min == 0 && seg == 0)
+        {
+            min = 1;
+        }
     }
 
     public void DetenerJuego()

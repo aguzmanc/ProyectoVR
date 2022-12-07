@@ -12,7 +12,7 @@ public class DetectorBoton : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other) {
 
-        if(other.tag == "Mano")
+        if(other.tag == "Mano" || other.tag == "Mjolnir")
         {
             boton.Presionar();
         }           
@@ -20,7 +20,7 @@ public class DetectorBoton : MonoBehaviour
     }
     private void OnTriggerExit(Collider other) {
 
-        if(other.tag == "Mano")
+        if(other.tag == "Mano" || other.tag == "Mjolnir")
         {
             boton.Soltar();
         }
@@ -28,7 +28,7 @@ public class DetectorBoton : MonoBehaviour
     }
     private void OnTriggerStay(Collider other) {
 
-        if(other.tag == "Mano")
+        if(other.tag == "Mano" || other.tag == "Mjolnir")
         {
             boton.Presionar();
         }
