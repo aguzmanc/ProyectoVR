@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class ObjectiveGenerate : MonoBehaviour
 {
+    [SerializeField] float mov;
     
-    
-    [SerializeField] GameObject objectivePrefab;
-    [SerializeField] float minDifference = 20;
     bool right;
     bool left;
 
@@ -17,13 +15,13 @@ public class ObjectiveGenerate : MonoBehaviour
     Vector3 izq, der;
     
 
-    IEnumerator Start() {
+    void Start() {
         izq = transform.position;
-        der = new Vector3(transform.position.x, transform.position.y, transform.position.z + 10f);
-        while(true){
+        der = new Vector3(transform.position.x, transform.position.y, transform.position.z + mov);
+        /*while(true){
             yield return new WaitForSeconds(5);
             //Instantiate(objectivePrefab);
-        }
+        }*/
 
     }
 
