@@ -24,9 +24,6 @@ public class GrabBarrilWithLeft : MonoBehaviour
         if(presionado && cerca && !agarrado)
         {
             agarrado = true;
-            transform.SetParent(parentSustitute);
-            transform.localPosition = new Vector3(0,0,0);
-            transform.localRotation = Quaternion.identity;
             HandInBarril.SetActive(true);
             HandController.SetActive(false);
             Debug.Log("Barril Agarrado");
@@ -34,10 +31,7 @@ public class GrabBarrilWithLeft : MonoBehaviour
 
         if(!presionado && agarrado && cerca)
         {
-            agarrado = false;
-            transform.SetParent(parentOriginal);
-            transform.localPosition = new Vector3(0,0,0);
-            transform.localRotation = Quaternion.identity;   
+            agarrado = false; 
             HandInBarril.SetActive(false);  
             HandController.SetActive(true);       
             Debug.Log("Barril Soltado");
