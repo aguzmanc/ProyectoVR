@@ -7,6 +7,9 @@ public class Disparador : MonoBehaviour
 {
     public GameObject Balas;
     private int municionRifle = 30;
+    public GameObject Arma;
+
+    private bool sinmunicion;
 
     [Range(0, 20)]
     public float rangoRotacion = 3;
@@ -15,6 +18,11 @@ public class Disparador : MonoBehaviour
         if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
         {
             disparar();
+
+        }
+        if (sinmunicion)
+        {
+            Instantiate(Arma);
         }
 
     }
@@ -23,6 +31,7 @@ public class Disparador : MonoBehaviour
     {
         if (municionRifle > 0)
         {
+            sinmunicion = false;
             GameObject bullet =
                (GameObject)Instantiate(Balas,
                            transform.position,
@@ -31,6 +40,11 @@ public class Disparador : MonoBehaviour
             float rotX = Random.Range(-rangoRotacion, rangoRotacion);
             bullet.transform.Rotate(rotX, rotY, 0);
             municionRifle--;
+            if (municionRifle == 0)
+            {
+                sinmunicion = true;
+                Debug.Log("Cartucho vacio");
+            }
         }
     }
 
