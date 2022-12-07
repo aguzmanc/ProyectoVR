@@ -14,6 +14,8 @@ public class GrabBarrilWithLeft : MonoBehaviour
     public GameObject HandInBarril;
     public GameObject HandController;
 
+    public Transform parentGunDirection;
+
     void Update()
     {
         presionado = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger);
@@ -40,7 +42,11 @@ public class GrabBarrilWithLeft : MonoBehaviour
             HandController.SetActive(true);       
             Debug.Log("Barril Soltado");
         }
-        
+
+        if (agarrado) {
+            parentGunDirection.LookAt(transform);
+        }
+
     }
 
     void OnTriggerEnter(Collider other)
