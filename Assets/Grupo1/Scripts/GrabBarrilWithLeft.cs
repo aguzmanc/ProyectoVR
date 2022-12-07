@@ -10,10 +10,14 @@ public class GrabBarrilWithLeft : MonoBehaviour
 
     public Transform parentOriginal;
     public Transform parentSustitute;   
-    
+
+    public GameObject HandInBarril;
+    public GameObject HandController;
+
     void Update()
     {
         presionado = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger);
+        //presionado = Input.GetKey(KeyCode.P);
 
         if(presionado && cerca && !agarrado)
         {
@@ -21,6 +25,8 @@ public class GrabBarrilWithLeft : MonoBehaviour
             transform.SetParent(parentSustitute);
             transform.localPosition = new Vector3(0,0,0);
             transform.localRotation = Quaternion.identity;
+            HandInBarril.SetActive(true);
+            HandController.SetActive(false);
             Debug.Log("Barril Agarrado");
         }
 
@@ -29,14 +35,12 @@ public class GrabBarrilWithLeft : MonoBehaviour
             agarrado = false;
             transform.SetParent(parentOriginal);
             transform.localPosition = new Vector3(0,0,0);
-            transform.localRotation = Quaternion.identity;            
+            transform.localRotation = Quaternion.identity;   
+            HandInBarril.SetActive(false);  
+            HandController.SetActive(true);       
             Debug.Log("Barril Soltado");
         }
-
-        if (presionado && agarrado && cerca) {
-            transform.localPosition = new Vector3(0,0,0);
-            transform.localRotation = Quaternion.identity;            
-        } 
+        
     }
 
     void OnTriggerEnter(Collider other)
