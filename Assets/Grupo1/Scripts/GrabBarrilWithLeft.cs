@@ -24,7 +24,7 @@ public class GrabBarrilWithLeft : MonoBehaviour
             Debug.Log("Barril Agarrado");
         }
 
-        if(presionado == false && agarrado == true && cerca == true)
+        if(!presionado && agarrado && cerca)
         {
             agarrado = false;
             transform.SetParent(parentOriginal);
@@ -32,6 +32,11 @@ public class GrabBarrilWithLeft : MonoBehaviour
             transform.localRotation = Quaternion.identity;            
             Debug.Log("Barril Soltado");
         }
+
+        if (presionado && agarrado && cerca) {
+            transform.localPosition = new Vector3(0,0,0);
+            transform.localRotation = Quaternion.identity;            
+        } 
     }
 
     void OnTriggerEnter(Collider other)
