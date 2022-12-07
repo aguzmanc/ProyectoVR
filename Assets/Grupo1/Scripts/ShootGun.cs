@@ -22,11 +22,13 @@ public class ShootGun : MonoBehaviour
     AudioSource audioSource;    
 
     [Header("Weapon Stats")]    
-    [SerializeField] private float projectile_speed = 200f;
+    [SerializeField] private float projectile_speed = 200f; 
+
     [SerializeField] private float fire_ratio = 300; 
     private bool canFire = true;   
     [SerializeField] private int ammunition = 30;    
     [SerializeField] private int shoot_type = 0; // 0 = Single. 1 = Automatic.      
+
     
     private void Start() {
         audioSource = GetComponent<AudioSource>();
@@ -51,7 +53,7 @@ public class ShootGun : MonoBehaviour
                 StartCoroutine(ShootAutomatic());
             }
         }        
-        
+
     }
 
     IEnumerator ShootAutomatic() {
