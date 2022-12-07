@@ -23,6 +23,7 @@ public class Disparador : MonoBehaviour
         if (sinmunicion)
         {
             Instantiate(Arma);
+            sinmunicion = false;
         }
 
     }
