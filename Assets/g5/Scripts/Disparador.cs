@@ -9,8 +9,6 @@ public class Disparador : MonoBehaviour
     
     [Range(0, 20)]
     public float rangoRotacion = 3;
-
-    public bool cargada;
     void Update()
     {
 
