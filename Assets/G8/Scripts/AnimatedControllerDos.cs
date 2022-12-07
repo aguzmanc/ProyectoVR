@@ -22,9 +22,20 @@ public class AnimatedControllerDos : MonoBehaviour
     public float life;
     float DistanciaAtaque;
     GameObject padre;
-    float delay=0.1f;
+    float delay=0.5f;
     float elapsed;
 
+    float delay2 = 1f;
+    float elapsed2;
+
+    [SerializeField] private AudioClip[] audios;
+    private AudioSource controlAudio;
+    JugadorCompleto jugacomple;
+    float dano;
+    private void Awake()
+    {
+        controlAudio = GetComponent<AudioSource>();
+    }
     private void Start()
     {
         
@@ -32,23 +43,27 @@ public class AnimatedControllerDos : MonoBehaviour
         seguidor = gameObject.GetComponentInParent<Seguidor>();
         generador= GameObject.FindGameObjectWithTag("Detector");
         gene = generador.GetComponentInParent<GeneraradorMete>();
-
+        jugacomple = jugador.GetComponentInParent<JugadorCompleto>();
+        
         padre = gameObject.transform.parent.gameObject;
         StartCoroutine(InicioSaltarin());
         if (gameObject.tag=="MetalonRojo")
         {
             life = 400;
             DistanciaAtaque = 5f;
+            dano = 10;
         }
         else if (gameObject.tag == "MetalonVerde")
         {
             life = 300;
             DistanciaAtaque = 5f;
+            dano = 5;
         }
         else if (gameObject.tag == "MetalonMorado")
         {
             life = 600;
             DistanciaAtaque = 6f;
+            dano = 20;
         }
     }
     IEnumerator RecibirGolpeVivo()
@@ -57,8 +72,26 @@ public class AnimatedControllerDos : MonoBehaviour
         seguidor.moverse = false;
         _animator.SetBool(MovingHash, false);
         _animator.SetBool(AttackHash, false);
+        _animator.SetBool(HitHash, true);   
+        controlAudio.PlayOneShot(audios[3], 0.6f);
+        controlAudio.PlayOneShot(audios[4], 1f);
+        yield return new WaitForSeconds(2);
+        _animator.SetBool(MovingHash, true);
+        seguidor.moverse = true;
+        _animateWhenRun = true;
+    }
+
+    IEnumerator RecibirGolpeVivoRasho()
+    {
+        _animateWhenRun = false;
+        seguidor.moverse = false;
+        _animator.SetBool(MovingHash, false);
+        _animator.SetBool(AttackHash, false);
         _animator.SetBool(HitHash, true);
-        
+        if (!controlAudio.isPlaying)
+        {
+            controlAudio.PlayOneShot(audios[3], 0.6f);
+        }
         yield return new WaitForSeconds(2);
         _animator.SetBool(MovingHash, true);
         seguidor.moverse = true;
@@ -70,10 +103,12 @@ public class AnimatedControllerDos : MonoBehaviour
         _animateWhenRun = false;
         seguidor.moverse = false;
         _animator.SetBool(MovingHash, false);
-        _animator.SetBool(IsDeadHash, true);  
+        _animator.SetBool(IsDeadHash, true);
+        controlAudio.PlayOneShot(audios[2], 1f);
         yield return new WaitForSeconds(1f);
         Destroy(padre);
         gene.enemigosContados = gene.enemigosContados - 1;
+        jugacomple.eliminaciones = jugacomple.eliminaciones + 1;
     }
     IEnumerator UltimoAlientoRasho()
     {
@@ -81,9 +116,14 @@ public class AnimatedControllerDos : MonoBehaviour
         seguidor.moverse = false;
         _animator.SetBool(MovingHash, false);
         _animator.SetBool(IsDeadHash, true);
-        yield return new WaitForSeconds(2f);
+        if (!controlAudio.isPlaying)
+        {
+            controlAudio.PlayOneShot(audios[2], 1f);
+        }
+        yield return new WaitForSeconds(1f);
         Destroy(padre);
         gene.enemigosContados = gene.enemigosContados - 1;
+        jugacomple.eliminaciones = jugacomple.eliminaciones + 1;
     }
     IEnumerator InicioSaltarin()
     {
@@ -96,6 +136,17 @@ public class AnimatedControllerDos : MonoBehaviour
         seguidor.moverse = true;
         _animateWhenRun = true;
         gene.enemigosContados = gene.enemigosContados + 1;
+    }
+
+    IEnumerator Final()
+    {
+        _animateWhenRun = false;
+        seguidor.moverse = false;
+        _animator.SetBool(MovingHash, false);
+        _animator.SetBool(IsDeadHash, true);
+        yield return new WaitForSeconds(1f);
+        Destroy(padre);
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -128,11 +179,11 @@ public class AnimatedControllerDos : MonoBehaviour
             elapsed += Time.deltaTime;
             if (elapsed >= delay)
             {
-                life = life - 10;
+                life = life - 30;
                 if (life > 0)
                 {
                     
-                    StartCoroutine(RecibirGolpeVivo());
+                    StartCoroutine(RecibirGolpeVivoRasho());
                     elapsed = 0;
                 }
                 else
@@ -150,22 +201,43 @@ public class AnimatedControllerDos : MonoBehaviour
     private void Update()
     {
 
+        if (jugacomple.eliminaciones >= 50 || jugacomple.vidaJugador <= 0)
+        {
+            StartCoroutine(Final());
+        }
 
-        
-            var tr = transform;
+
+        var tr = transform;
             var position = tr.position;
             float distancia = CalculateDistanceInSpace();
 
             if (distancia > DistanciaAtaque && _animateWhenRun)
             {
-                
+                if (!controlAudio.isPlaying)
+                {
+                controlAudio.PlayOneShot(audios[0], 0.8f);
+                }
                 _animator.SetBool(MovingHash, true);
                 
             }
             else if(distancia <= DistanciaAtaque && _animateWhenRun)
             {
+                elapsed2 += Time.deltaTime;
+                if (elapsed2 >= delay2)
+                {
+                jugacomple.estado = false;
+                jugacomple.vidaJugador = jugacomple.vidaJugador - dano;
+                elapsed2 = 0;
+                
+
+                }
+                if (!controlAudio.isPlaying)
+                {
+                controlAudio.PlayOneShot(audios[1], 0.5f);
+                }
                 _animator.SetBool(MovingHash, false);
                 _animator.SetBool(AttackHash, true);
+                
 
             }
 

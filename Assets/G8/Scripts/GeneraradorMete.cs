@@ -13,7 +13,18 @@ public class GeneraradorMete : MonoBehaviour
     public int limiteEnemigos;
     public int enemigosContados;
     // Start is called before the first frame update
+    [SerializeField] private AudioClip[] audios;
+    private AudioSource controlAudio;
 
+    GameObject jugador;
+    JugadorCompleto jugacomple;
+
+    private void Awake()
+    {
+        controlAudio = GetComponent<AudioSource>();
+        jugador = GameObject.FindGameObjectWithTag("Jugador");
+        jugacomple = jugador.GetComponentInParent<JugadorCompleto>();
+    }
     IEnumerator Start()
     {
         limiteEnemigos = 8;
@@ -21,13 +32,28 @@ public class GeneraradorMete : MonoBehaviour
         {
             if (enemigosContados<=limiteEnemigos)
             {
-                Generar();
+                if (jugacomple.eliminaciones <50 || jugacomple.vidaJugador > 0)
+                {
+                    Generar();
+                    StartCoroutine(SonidoMete());
+                }
+                
             }   
             yield return new WaitForSeconds(tiempo);
             
 
         }
 
+    }
+
+    IEnumerator SonidoMete()
+    {
+        
+        yield return new WaitForSeconds(3);
+
+        
+        controlAudio.PlayOneShot(audios[0], 0.8f);
+        
     }
 
     // Update is called once per frame
@@ -39,7 +65,7 @@ public class GeneraradorMete : MonoBehaviour
     private void Generar()
     {
         Instantiate(obstaculos[Random.Range(0, obstaculos.Length)], new Vector3(Random.Range(-9, 9), transform.position.y + 100, Random.Range(-52, 57)), Quaternion.Euler(Vector3.up * (Random.Range(0, 4) * 90)));
-
+        
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -60,8 +86,9 @@ public class GeneraradorMete : MonoBehaviour
 
         }
         else if (other.tag == "MeteoritoBB")
-        {      
-                GameObject enemigo =
+        {
+            
+            GameObject enemigo =
                 (GameObject)Instantiate(enemigoNormal, new Vector3(other.transform.position.x , 0, other.transform.position.z ), other.transform.rotation);
                 Destroy(other.gameObject);
                 GameObject explision =
@@ -71,6 +98,7 @@ public class GeneraradorMete : MonoBehaviour
         }
         else if (other.tag == "MeteoritoVerde")
         {
+            
             GameObject enemigo =
             (GameObject)Instantiate(enemigos[0], new Vector3(other.transform.position.x, 0, other.transform.position.z), other.transform.rotation);
             Destroy(other.gameObject);
@@ -81,6 +109,7 @@ public class GeneraradorMete : MonoBehaviour
         }
         else if (other.tag == "MeteoritoRojo")
         {
+            
             GameObject enemigo =
             (GameObject)Instantiate(enemigos[1], new Vector3(other.transform.position.x, 0, other.transform.position.z), other.transform.rotation);
             Destroy(other.gameObject);
@@ -91,6 +120,7 @@ public class GeneraradorMete : MonoBehaviour
         }
         else if (other.tag == "MeteoritoMorado")
         {
+            
             GameObject enemigo =
             (GameObject)Instantiate(enemigos[2], new Vector3(other.transform.position.x, 0, other.transform.position.z), other.transform.rotation);
             Destroy(other.gameObject);

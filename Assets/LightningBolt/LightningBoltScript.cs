@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace DigitalRuby.LightningBolt
 {
@@ -97,6 +98,22 @@ namespace DigitalRuby.LightningBolt
         private int animationPingPongDirection = 1;
         private bool orthographic;
 
+        bool inicio;
+
+        IEnumerator Incis()
+        {
+            
+            
+            yield return new WaitForSeconds(1);
+            inicio = false;
+        }
+
+        [SerializeField] private AudioClip[] audios;
+        private AudioSource controlAudio;
+        private void Awake()
+        {
+            controlAudio = GetComponent<AudioSource>();
+        }
         private void GetPerpendicularVector(ref Vector3 directionNormalized, out Vector3 side)
         {
             if (directionNormalized == Vector3.zero)
@@ -285,6 +302,7 @@ namespace DigitalRuby.LightningBolt
         }
 
         CapsuleCollider capsule;
+        
         private void Start()
         {
             capsule = gameObject.GetComponent<CapsuleCollider>();
@@ -294,22 +312,57 @@ namespace DigitalRuby.LightningBolt
             UpdateFromMaterialChange();
         }
 
+
         private void Update()
         {
-            if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) > 0.0f)
+            if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger, OVRInput.Controller.RTouch))
             {
+                if (inicio)
+                {
+                    if (!controlAudio.isPlaying)
+                    {
+                        controlAudio.PlayOneShot(audios[0], 0.8f);
+                        StartCoroutine(Incis());
+                    }
+                }
+                else
+                {
+                    if (!controlAudio.isPlaying)
+                    {
+                        controlAudio.PlayOneShot(audios[1], 0.8f);
+                    }
+                }
+                
                 capsule.enabled = true;
                 ManualMode = false;
+                
 
             }
             else
             {
                 capsule.enabled = false;
                 ManualMode = true;
+                inicio = true;
             }
 
             if (Input.GetKey(KeyCode.Space))
             {
+                if (inicio)
+                {
+                    if (!controlAudio.isPlaying)
+                    {
+                        controlAudio.PlayOneShot(audios[0], 0.8f);
+                        StartCoroutine(Incis());
+                    }
+                }
+                else
+                {
+                    if (!controlAudio.isPlaying)
+                    {
+                        controlAudio.PlayOneShot(audios[1], 0.8f);
+                    }
+                }
+                
                 capsule.enabled = true;
                 ManualMode = false;
 
@@ -318,6 +371,7 @@ namespace DigitalRuby.LightningBolt
             {
                 capsule.enabled = false;
                 ManualMode = true;
+                inicio = true;
             }
 
             orthographic = (Camera.main != null && Camera.main.orthographic);
