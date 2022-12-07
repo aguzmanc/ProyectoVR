@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallestaAgarre : MonoBehaviour
+public class CrossbowMother : MonoBehaviour
 {
     [SerializeField]
     Transform _movible, _origen;
@@ -27,7 +27,8 @@ public class BallestaAgarre : MonoBehaviour
         Vector3 local = _origen.InverseTransformPoint(_referencia.position);
         
         float x = local.x;
+        float y = local.y;     
         
-        _movible.localPosition = new Vector3(x, 0, 0);
+        _movible.localPosition = new Vector3(x, y, 0);
     }
 }
