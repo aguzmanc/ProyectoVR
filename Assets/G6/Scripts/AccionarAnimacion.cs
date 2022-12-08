@@ -20,15 +20,22 @@ public class AccionarAnimacion : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
     }
 
-    bool botonDispararA = OVRInput.GetUp(OVRInput.RawButton.A);
     // Update is called once per frame
     void Update()
     {
-        if (agarrado == true) {
-            if(botonDispararA == true){
-                anim.SetTrigger("Fire");
+            bool Cargar = OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger);
+            bool Disparar = OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger);
+
+        if (Cargar == true){
+                anim.SetTrigger("Hold");
             }
 
+        if (Disparar == true)
+        {
+            Debug.Log("Fire");
+            anim.SetTrigger("Fire");
         }
+
+
     }
 }
