@@ -20,15 +20,15 @@ public class SpawnBalas : MonoBehaviour
     }
     void Update()
     {
-        /*if ((OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0) && (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger, OVRInput.Controller.RTouch) > 0))
+        if ((OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0) && (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger, OVRInput.Controller.RTouch) > 0))
         {
             botonDisparo = true;
         }
         else
         {
             botonDisparo = false;
-        }*/
-        botonDisparo = true;
+        }
+        /*botonDisparo = true;*/
         /*else botonDisparo = false;*/
         if (botonDisparo)
             if (controladorCorrutina)
