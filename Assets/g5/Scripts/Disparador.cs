@@ -9,7 +9,11 @@ public class Disparador : MonoBehaviour
     private int municionRifle = 30;
     public GameObject Arma;
 
+    public AudioSource controlSonido; //Controlar el Sonido
+    public AudioClip sonidoDisparo; //Reproducir Sonido
+    public AudioClip sonidoSinBalas; 
     private bool sinmunicion;
+
 
     [Range(0, 20)]
     public float rangoRotacion = 3;
@@ -20,11 +24,11 @@ public class Disparador : MonoBehaviour
             disparar();
 
         }
-        if (sinmunicion)
+        /*if (sinmunicion)
         {
             Instantiate(Arma);
             sinmunicion = false;
-        }
+        }*/
 
     }
 
@@ -41,12 +45,20 @@ public class Disparador : MonoBehaviour
             float rotX = Random.Range(-rangoRotacion, rangoRotacion);
             bullet.transform.Rotate(rotX, rotY, 0);
             municionRifle--;
+            if (sinmunicion == false)
+            {
+                controlSonido.PlayOneShot(sonidoDisparo);
+            }
             if (municionRifle == 0)
             {
                 sinmunicion = true;
                 Debug.Log("Cartucho vacio");
+                controlSonido.PlayOneShot(sonidoSinBalas);
+            }
+            if (sinmunicion == true)
+            {
+                controlSonido.PlayOneShot(sonidoSinBalas);
             }
         }
     }
-
 }
