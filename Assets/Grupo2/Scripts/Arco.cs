@@ -24,19 +24,11 @@ public class Arco : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-<<<<<<< HEAD
-        if(other.tag == "Bala" && sumaPuntos)
-        {
-            sumaPuntos = false;
-            rb.isKinematic = false;
-            if(randomCaida < 1) rotar = Quaternion.Euler(-90, 0, 0);
-=======
         if (other.tag == "Bala" && sumaPuntos)
         {
             sumaPuntos = false;
             rb.isKinematic = false;
             if (randomCaida < 1) rotar = Quaternion.Euler(-90, 0, 0);
->>>>>>> f7f7f99817d6cb8cf05f366baa339cf29fdcfd4c
             else rotar = Quaternion.Euler(90, 0, 0);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotar, Time.deltaTime);
             FindObjectOfType<Controlador>().SumarPuntos(5);
@@ -48,9 +40,5 @@ public class Arco : MonoBehaviour
         yield return new WaitForSeconds(segundos);
         Instantiate(arco, new Vector3(x, y, z), rotacionInicio);
         Destroy(gameObject);
-<<<<<<< HEAD
-    } 
-=======
     }
->>>>>>> f7f7f99817d6cb8cf05f366baa339cf29fdcfd4c
 }

@@ -16,18 +16,12 @@ public class Controlador : MonoBehaviour
     public void MostrarPuntos(int totalPuntos)
     {
         puntos.text = "Puntaje: " + totalPuntos.ToString();
-<<<<<<< HEAD
-    }  
-=======
     }
->>>>>>> f7f7f99817d6cb8cf05f366baa339cf29fdcfd4c
+
     public void SumarPuntos(int puntosSumar)
     {
         totalPuntos = totalPuntos + puntosSumar;
         MostrarPuntos(totalPuntos);
     }
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> f7f7f99817d6cb8cf05f366baa339cf29fdcfd4c
