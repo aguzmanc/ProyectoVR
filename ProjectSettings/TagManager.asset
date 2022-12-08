@@ -7,6 +7,8 @@ TagManager:
   - Puntaje
   - contador
   - lata
+  - Bala
+  - Terreno
   layers:
   - Default
   - TransparentFX
