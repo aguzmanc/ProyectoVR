@@ -8,7 +8,7 @@ public class DestruirBala : MonoBehaviour
     {
         if (other.tag == "Balas" )
         {
-            Destroy(other.gameObject);
+            
             Debug.Log("Eliminado");
         }
     }
