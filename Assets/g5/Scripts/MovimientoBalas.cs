@@ -20,5 +20,6 @@ public class MovimientoBalas : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         Destroy(this.gameObject);
+        Destroy(other.gameObject);
     }
 }
