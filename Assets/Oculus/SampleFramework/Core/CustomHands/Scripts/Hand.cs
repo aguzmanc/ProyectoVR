@@ -61,6 +61,7 @@ namespace OVRTouchSample
         private Collider[] m_colliders = null;
         private bool m_collisionEnabled = true;
         private OVRGrabber m_grabber;
+        private AccionarAnimacion a_anim;
 
         List<Renderer> m_showAfterInputFocusAcquired;
 
@@ -201,7 +202,7 @@ namespace OVRTouchSample
             HandPose grabPose = m_defaultGrabPose;
             if (grabbing)
             {
-                
+                a_anim.DetectarAgarrado(grabbing);
                 HandPose customPose = m_grabber.grabbedObject.GetComponent<HandPose>();
                 if (customPose != null) grabPose = customPose;
             }
