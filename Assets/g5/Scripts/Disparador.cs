@@ -13,6 +13,7 @@ public class Disparador : MonoBehaviour
     public AudioClip sonidoDisparo; //Reproducir Sonido
     public AudioClip sonidoSinBalas; 
     private bool sinmunicion;
+    Vector3 position;
 
 
     [Range(0, 20)]
@@ -24,11 +25,14 @@ public class Disparador : MonoBehaviour
             disparar();
 
         }
-        /*if (sinmunicion)
+        if (sinmunicion)
         {
-            Instantiate(Arma);
+            Quaternion rotation = new Quaternion(0f,0f,0f,0f);
+            position = new Vector3(0.926f,0.771f,0);
+            Destroy(Arma);
+            Instantiate(Arma, position, rotation);
             sinmunicion = false;
-        }*/
+        }
 
     }
 
