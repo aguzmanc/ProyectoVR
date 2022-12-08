@@ -152,7 +152,7 @@ public class OVRGrabber : MonoBehaviour
     // your hands or held objects, you may wish to switch to parenting.
     void OnUpdatedAnchors()
     {
-        Vector3 destPos = m_parentTransform.InverseTransformPoint(m_anchorOffsetPosition);
+        Vector3 destPos = m_parentTransform.TransformPoint(m_anchorOffsetPosition);
         Quaternion destRot = m_parentTransform.rotation * m_anchorOffsetRotation;
 
         if (m_moveHandPosition)

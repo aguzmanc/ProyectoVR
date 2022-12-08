@@ -55,6 +55,9 @@ namespace OVRTouchSample
         [SerializeField]
         private HandPose m_defaultGrabPose = null;
 
+        [SerializeField]
+        bool grabbing;
+
         private Collider[] m_colliders = null;
         private bool m_collisionEnabled = true;
         private OVRGrabber m_grabber;
@@ -193,10 +196,12 @@ namespace OVRTouchSample
 
         private void UpdateAnimStates()
         {
-            bool grabbing = m_grabber.grabbedObject != null;
+            
+            grabbing = m_grabber.grabbedObject != null;
             HandPose grabPose = m_defaultGrabPose;
             if (grabbing)
             {
+                
                 HandPose customPose = m_grabber.grabbedObject.GetComponent<HandPose>();
                 if (customPose != null) grabPose = customPose;
             }
