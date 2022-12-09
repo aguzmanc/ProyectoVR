@@ -8,6 +8,10 @@ public class SpawnBalas : MonoBehaviour
     [SerializeField]
     private GameObject bala;
     [SerializeField]
+    private GameObject cargadorVacio;
+    [SerializeField]
+    private GameObject cargador;
+    [SerializeField]
     int segundosControlDisparo;
     [SerializeField]
     bool controladorCorrutina = true;
@@ -18,10 +22,14 @@ public class SpawnBalas : MonoBehaviour
     int contadorBalas;
     [SerializeField]
     int balasCargadorLleno;
+    bool confirmarCargadorArma;
+    [SerializeField]
+    Transform posicionCargador;
     void Start()
     {
         controladorDisparo = true;
         contadorBalas = balasCargadorLleno;
+        confirmarCargadorArma = true;
     }
     void Update()
     {
@@ -37,7 +45,10 @@ public class SpawnBalas : MonoBehaviour
         /*else botonDisparo = false;*/
         if (botonDisparo && controladorCorrutina && controladorDisparo && contadorBalas > 0)
             StartCoroutine(Coroutine(segundosControlDisparo));
-
+        if(contadorBalas == 0 && confirmarCargadorArma){
+            Instantiate(cargadorVacio, posicionCargador.transform.position, transform.rotation);
+            confirmarCargadorArma = false;
+        }
     }
     IEnumerator Coroutine(int segundos)
     {
@@ -52,5 +63,19 @@ public class SpawnBalas : MonoBehaviour
     public void CambiarCargador()
     {
         contadorBalas = balasCargadorLleno;
+        confirmarCargadorArma = true;
+        Quaternion rotacionCargador = Quaternion.Euler(0,0,90);
+        StartCoroutine(CrearCargador(3, rotacionCargador));
+    }
+    public bool CargadorEnArma()
+    {
+        if(contadorBalas>0)
+            return true; 
+        else return false;
+    }
+    IEnumerator CrearCargador(int segundos, Quaternion rotacionCargador)
+    {
+        yield return new WaitForSeconds(segundos);
+        Instantiate(cargador, new Vector3(0.2f, 1.2f, -17.5f), rotacionCargador);
     }
 }
