@@ -9,6 +9,7 @@ TagManager:
   - lata
   - Bala
   - Terreno
+  - Cargador
   layers:
   - Default
   - TransparentFX
