@@ -9,8 +9,6 @@ TagManager:
   - lata
   - Bala
   - Terreno
-  - RoomLight
-  - Cargador
   layers:
   - Default
   - TransparentFX

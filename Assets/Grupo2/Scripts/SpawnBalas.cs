@@ -14,42 +14,35 @@ public class SpawnBalas : MonoBehaviour
     [SerializeField]
     bool botonDisparo;
     bool controladorDisparo;
-    [SerializeField]
-    int contadorBalas;
-    [SerializeField]
-    int balasIniciales;
     void Start()
     {
-        contadorBalas = balasIniciales;
         controladorDisparo = true;
     }
     void Update()
     {
-        /*if ((OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0))
+        if ((OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0))
         {
             botonDisparo = true;
         }
         else
         {
             botonDisparo = false;
-        }*/
-        /*botonDisparo = true;
-        else botonDisparo = false;*/
-        if (botonDisparo && controladorDisparo && controladorCorrutina && contadorBalas > 0)
-            StartCoroutine(Coroutine(segundosControlDisparo));
+        }
+        /*botonDisparo = true;*/
+        /*else botonDisparo = false;*/
+        if (botonDisparo)
+            if (controladorCorrutina)
+            {
+                StartCoroutine(Coroutine(segundosControlDisparo));
+            }
     }
     IEnumerator Coroutine(int segundos)
     {
-        Instantiate(bala, new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.5f), transform.rotation);
+        if (controladorDisparo && botonDisparo) Instantiate(bala, new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.5f), transform.rotation);
         controladorCorrutina = false;
         controladorDisparo = false;
-        contadorBalas -= 1;
         yield return new WaitForSeconds(segundos);
         controladorDisparo = true;
         controladorCorrutina = true;
-    }
-    public void CargarBalas()
-    {
-        contadorBalas = balasIniciales;
     }
 }
