@@ -25,6 +25,10 @@ public class SpawnBalas : MonoBehaviour
     bool confirmarCargadorArma;
     [SerializeField]
     Transform posicionCargador;
+    [SerializeField]
+    AudioSource recarga;
+    [SerializeField]
+    AudioSource disparo;
     void Start()
     {
         controladorDisparo = true;
@@ -53,6 +57,7 @@ public class SpawnBalas : MonoBehaviour
     IEnumerator Coroutine(int segundos)
     {
         Instantiate(bala, new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.5f), transform.rotation);
+        disparo.Play();
         controladorCorrutina = false;
         controladorDisparo = false;
         contadorBalas -= 1;
@@ -65,6 +70,7 @@ public class SpawnBalas : MonoBehaviour
         contadorBalas = balasCargadorLleno;
         confirmarCargadorArma = true;
         Quaternion rotacionCargador = Quaternion.Euler(0,0,90);
+        recarga.Play();
         StartCoroutine(CrearCargador(3, rotacionCargador));
     }
     public bool CargadorEnArma()

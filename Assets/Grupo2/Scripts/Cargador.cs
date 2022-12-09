@@ -6,7 +6,7 @@ public class Cargador : MonoBehaviour
 {
     [SerializeField]
     private GameObject cargadorVacio;
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if(other.tag == "Cargador")
         {
