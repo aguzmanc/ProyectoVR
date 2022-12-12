@@ -16556,6 +16556,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1217325003264258882, guid: 0242aa8515b4bc947a945a5c6df83ee9, type: 3}
+      propertyPath: m_moveHandPosition
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0242aa8515b4bc947a945a5c6df83ee9, type: 3}
 --- !u!1 &1505041727 stripped
@@ -16585,16 +16589,19 @@ MonoBehaviour:
   m_parentHeldObject: 0
   m_moveHandPosition: 0
   m_gripTransform: {fileID: 1505041728}
-  m_grabVolumes: []
-  m_controller: 0
+  m_grabVolumes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_controller: 1
   m_parentTransform: {fileID: 1961292176}
   m_player: {fileID: 1961292174}
   m_spherecastRadius: 0
   m_noSnapThreshhold: 0.05
   m_useSpherecast: 0
-  m_preventGrabThroughWalls: 0
+  m_preventGrabThroughWalls: 1
   m_objectPullVelocity: 10
-  m_maxGrabDistance: 0
+  m_maxGrabDistance: 2
   m_grabObjectsInLayer: 0
   m_obstructionLayer: 0
 --- !u!1001 &1505765820
