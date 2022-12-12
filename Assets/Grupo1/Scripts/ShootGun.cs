@@ -52,8 +52,11 @@ public class ShootGun : MonoBehaviour
             if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger) && agarreMano.agarrado && canFire) {
                 StartCoroutine(ShootAutomatic());
             }
-        }        
+        }    
 
+        if (Input.GetButtonDown("Fire1")) {
+            ShootSingle();
+        }
     }
 
     IEnumerator ShootAutomatic() {
