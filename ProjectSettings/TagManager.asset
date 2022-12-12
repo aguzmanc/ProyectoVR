@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Arma
   - Objetive
+  - contador
+  - Magazine
+  - Bala
   layers:
   - Default
   - TransparentFX

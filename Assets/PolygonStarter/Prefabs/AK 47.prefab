@@ -43,8 +43,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49977e68cd423548943516ed026f219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Balas: {fileID: 4721573425787280966, guid: bf659c4ba240a71419974608a2ee5e6b, type: 3}
+  generador: {fileID: 0}
   Arma: {fileID: 0}
+  Balas: {fileID: 4721573425787280966, guid: bf659c4ba240a71419974608a2ee5e6b, type: 3}
+  municion: {fileID: 0}
+  sinMunicion: {fileID: 0}
+  agarreDisparo: 0
+  verificarMunicion: 0
+  caidaMunicion: {fileID: 0}
+  controlSonido: {fileID: 0}
+  sonidoDisparo: {fileID: 0}
+  sonidoSinBalas: {fileID: 0}
+  sonidoRecarga: {fileID: 0}
+  sinmunicion: 0
   rangoRotacion: 3
 --- !u!1 &373908879
 GameObject:

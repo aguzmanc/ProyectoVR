@@ -6,33 +6,39 @@ using UnityEngine.UIElements;
 
 public class Disparador : MonoBehaviour
 {
-    public GameObject generador;
 
-    Vector3 position;
     public GameObject Arma;
 
     public GameObject Balas;
-    //public int municionRifle = 30;
 
-    private int municionRifle = 10;
+    public GameObject municion; //cargador
 
-    [SerializeField]
-    public int MunicionRifle
-    {
-        get { return municionRifle; }
-        set { municionRifle = value; }
-    }
+    public GameObject sinMunicion; //cargador
+
+    public bool verificarMunicion; //Verifica si hay un cargador en el arma 
+
+    public Transform caidaMunicion; //agregamos el lugar en donde caera la municion
+
+    private int municionRifle = 30;
+
 
 
 
     public AudioSource controlSonido; //Controlar el Sonido
     public AudioClip sonidoDisparo; //Reproducir Sonido
-    public AudioClip sonidoSinBalas; 
+    public AudioClip sonidoSinBalas;
+    public AudioClip sonidoRecarga;
+
     public bool sinmunicion;
 
 
     [Range(0, 20)]
     public float rangoRotacion = 3;
+
+    void Start()
+    {
+        verificarMunicion = true;
+    }
     void Update()
     {
         if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
@@ -41,19 +47,27 @@ public class Disparador : MonoBehaviour
             if (sinmunicion)
             {
                 Debug.Log("Estamos sin municion");
-                Quaternion rotation = new Quaternion(0f, 90f, 0f, 0f);
-                position = generador.transform.position;
-                Destroy(Arma);
-                Instantiate(Arma, position, rotation);
-                Arma.transform.position = new Vector3();
+
                 sinmunicion = false;
             }
-
         }
-        
+        if (municionRifle == 0 && verificarMunicion)
+        {
+            sinmunicion = true;
+            controlSonido.PlayOneShot(sonidoSinBalas);
+            Instantiate(sinMunicion, caidaMunicion.transform.position, transform.rotation);
+            verificarMunicion = false;
+        }
+
+
 
     }
-
+    public bool ArmaCargada()
+    {
+        if (municionRifle > 0)
+            return true;
+        else return false;
+    }
     void disparar()
     {
         if (municionRifle > 0)
@@ -71,18 +85,20 @@ public class Disparador : MonoBehaviour
             {
                 controlSonido.PlayOneShot(sonidoDisparo);
             }
-            if (municionRifle == 0)
-            {
-                sinmunicion = true;
-                Debug.Log("Cartucho vacio");
-                controlSonido.PlayOneShot(sonidoSinBalas);
-
-
-            }
-            if (sinmunicion == true)
-            {
-                controlSonido.PlayOneShot(sonidoSinBalas);
-            }
         }
+    }
+
+    public void nuevaMunicion()
+    {
+        municionRifle = 30;
+        verificarMunicion = true;
+        Quaternion spawnCargador = Quaternion.Euler(0,0,90);
+        StartCoroutine(CrearCargador(200, spawnCargador));
+        controlSonido.PlayOneShot(sonidoRecarga);
+    }
+    IEnumerator CrearCargador(int segundos, Quaternion rotacionCargador)
+    {
+        yield return new WaitForSeconds(segundos);
+        Instantiate(municion, new Vector3(0.966f, 0.771f, -0.465f), rotacionCargador);
     }
 }

@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3194293981695054386}
   - component: {fileID: 7735057067308148966}
-  - component: {fileID: 4213494806359853570}
   - component: {fileID: 4807912765963793044}
-  - component: {fileID: 6361006668604173386}
+  - component: {fileID: 1768413546202448278}
+  - component: {fileID: 4036129048890466751}
   m_Layer: 0
   m_Name: Balas
-  m_TagString: Untagged
+  m_TagString: Bala
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,19 +51,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4213494806359853570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4721573425787280966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b91a05396c3474841a536783a9300e6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidad: 50
 --- !u!65 &4807912765963793044
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -77,7 +64,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.01, z: 0.02}
   m_Center: {x: 0, y: 0, z: 0.02}
---- !u!114 &6361006668604173386
+--- !u!114 &1768413546202448278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4721573425787280966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b91a05396c3474841a536783a9300e6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidad: 50
+--- !u!114 &4036129048890466751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

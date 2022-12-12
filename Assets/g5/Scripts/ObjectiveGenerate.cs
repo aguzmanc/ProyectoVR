@@ -39,27 +39,29 @@ public class ObjectiveGenerate : MonoBehaviour
 
             left = false;
             right = true;
-           Debug.Log("Left false");
 
         }
         if(transform.position == der){
             left = true;
             right = false;
-            Debug.Log("Left true");
         }
         if (right)
         {
             transform.position = Vector3.Lerp(transform.position,der,t);
-            Debug.Log("derecha");
         }
 
         if (left)
         {
             transform.position = Vector3.Lerp(transform.position,izq,t);
-            Debug.Log("izquierda");
 
         }
     }
 
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Bala")
+        {
+            FindObjectOfType<Puntaje>().SumarPuntos(10);
+        }
+    }
 }
