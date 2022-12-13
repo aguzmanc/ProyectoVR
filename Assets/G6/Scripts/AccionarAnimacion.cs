@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Oculus.Platform.Samples.VrBoardGame;
+using OVRTouchSample;
 
 public class AccionarAnimacion : MonoBehaviour
 {
@@ -11,9 +12,6 @@ public class AccionarAnimacion : MonoBehaviour
 
     Animator anim;
 
-    public void DetectarAgarrado(bool detect) {
-        agarrado = detect;
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -23,17 +21,12 @@ public class AccionarAnimacion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            bool Cargar = OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger);
-            bool Disparar = OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger);
+        //bool Cargar = OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger);
+        //bool Disparar = OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger);
 
-        if (Cargar == true){
-                anim.SetTrigger("Hold");
-            }
-
-        if (Disparar == true)
-        {
-            Debug.Log("Fire");
-            anim.SetTrigger("Fire");
+        bool disparar = OVRInput.Get(OVRInput.Button.One);
+        if (disparar){
+                anim.SetTrigger("Fire");
         }
 
 
