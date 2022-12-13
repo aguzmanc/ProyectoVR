@@ -168,6 +168,18 @@ public class AnimatedControllerDos : MonoBehaviour
             }
             
         }
+        else if (other.tag == "Tesla")
+        {
+            life = life - 100;
+            if (life > 0)
+            {
+                StartCoroutine(RecibirGolpeVivo());
+            }
+            else
+            {
+                StartCoroutine(UltimoAliento());
+            }
+        }
 
 
 

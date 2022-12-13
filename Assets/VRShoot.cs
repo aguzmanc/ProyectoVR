@@ -8,13 +8,19 @@ public class VRShoot : MonoBehaviour
     public OVRInput.Button shootButton;
 
     private OVRGrabbable grabbable;
-   // private AudioSource audio;
+
+    private AudioSource audio;
+    [SerializeField] private AudioClip[] audios;
     // Start is called before the first frame update
     void Start()
     {
         grabbable = GetComponent<OVRGrabbable>();
-      //  audio = GetComponent<AudioSource>();
         
+
+    }
+    private void Awake()
+    {
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -23,12 +29,12 @@ public class VRShoot : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             simpleShoot.StartShoot();
-          //  audio.Play();
+            audio.PlayOneShot(audios[0], 0.6f);
         }
         if (grabbable.isGrabbed && OVRInput.GetDown(shootButton,grabbable.grabbedBy.GetController()))
         {
             simpleShoot.StartShoot();
-          //  audio.Play();
+            audio.PlayOneShot(audios[0], 0.6f);
         }
     }
 }
