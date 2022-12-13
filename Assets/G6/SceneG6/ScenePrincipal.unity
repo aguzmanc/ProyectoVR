@@ -2226,6 +2226,14 @@ PrefabInstance:
       value: Gatillo
       objectReference: {fileID: 0}
     - target: {fileID: 8995878213196351023, guid: 4a36f3a1e6f34494f8059f8dd3df1777, type: 3}
+      propertyPath: Ac
+      value: 
+      objectReference: {fileID: 8300000, guid: 369f077d27df39745b0b72e7f60cdaf8, type: 3}
+    - target: {fileID: 8995878213196351023, guid: 4a36f3a1e6f34494f8059f8dd3df1777, type: 3}
+      propertyPath: As
+      value: 
+      objectReference: {fileID: 1654402925}
+    - target: {fileID: 8995878213196351023, guid: 4a36f3a1e6f34494f8059f8dd3df1777, type: 3}
       propertyPath: puntos
       value: 
       objectReference: {fileID: 406571158}
@@ -2295,6 +2303,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+--- !u!82 &1654402925 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8296172669276728082, guid: 4a36f3a1e6f34494f8059f8dd3df1777, type: 3}
+  m_PrefabInstance: {fileID: 1654402919}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1668072667
 PrefabInstance:
   m_ObjectHideFlags: 0

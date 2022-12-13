@@ -10,6 +10,8 @@ public class AccionarAnimacion : MonoBehaviour
     [SerializeField]
     Animator anim;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,7 @@ public class AccionarAnimacion : MonoBehaviour
         //bool Cargar = OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger);
         //bool Disparar = OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger);
 
-        bool disparar = OVRInput.Get(OVRInput.Button.One);
+        bool disparar = Input.GetKey(KeyCode.Space);
         if (disparar){
                 anim.SetTrigger("Fire");
         }
