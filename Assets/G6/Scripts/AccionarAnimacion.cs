@@ -22,7 +22,7 @@ public class AccionarAnimacion : MonoBehaviour
         //bool Cargar = OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger);
         //bool Disparar = OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger);
 
-        bool disparar = Input.GetKey(KeyCode.Space);
+        bool disparar = OVRInput.Get(OVRInput.Button.One);
         if (disparar){
                 anim.SetTrigger("Fire");
         }

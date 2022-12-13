@@ -13,7 +13,7 @@ public class Disparador : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(tiempo);
-            if (Input.GetKey(KeyCode.Space) /*OVRInput.Get(OVRInput.Button.One)*/)
+            if (OVRInput.Get(OVRInput.Button.One))
             {
                 _prototipo.GetComponent<FlechaVelocidad>().puntos = puntos;
                 GameObject laser = (GameObject)Instantiate(_prototipo, transform.position, transform.parent.transform.rotation);  
