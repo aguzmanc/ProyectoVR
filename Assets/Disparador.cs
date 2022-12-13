@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Disparador : MonoBehaviour
 {
-    public GameObject prototipo;
+    public GameObject _prototipo;
+    public Puntos puntos;
     public float tiempo = 0.3f;
 
     IEnumerator Start()
@@ -12,9 +13,10 @@ public class Disparador : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(tiempo);
-            if (/*Input.GetKey(KeyCode.Space)*/ OVRInput.Get(OVRInput.Button.One))
+            if (Input.GetKey(KeyCode.Space) /*OVRInput.Get(OVRInput.Button.One)*/)
             {
-                GameObject laser = (GameObject)Instantiate(prototipo, transform.position, transform.parent.transform.rotation);  
+                _prototipo.GetComponent<FlechaVelocidad>().puntos = puntos;
+                GameObject laser = (GameObject)Instantiate(_prototipo, transform.position, transform.parent.transform.rotation);  
                 laser.transform.Rotate(90,90,0);  
             }      
         }
@@ -25,4 +27,5 @@ public class Disparador : MonoBehaviour
     {
         
     }
+
 }
