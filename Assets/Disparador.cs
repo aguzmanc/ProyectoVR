@@ -12,7 +12,7 @@ public class Disparador : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(tiempo);
-            if (/*Input.GetKey(KeyCode.Space)*/ Input.GetMouseButton(0))
+            if (/*Input.GetKey(KeyCode.Space)*/ OVRInput.Get(OVRInput.Button.One))
             {
                 GameObject laser = (GameObject)Instantiate(prototipo, transform.position, transform.parent.transform.rotation);  
                 laser.transform.Rotate(90,90,0);  
