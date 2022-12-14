@@ -54,9 +54,9 @@ public class ShootGun : MonoBehaviour
             }
         }    
 
-        if (Input.GetButtonDown("Fire1")) {
+        /*if (Input.GetButtonDown("Fire1")) {
             ShootSingle();
-        }
+        }*/
     }
 
     IEnumerator ShootAutomatic() {
