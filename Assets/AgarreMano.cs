@@ -33,6 +33,8 @@ public class AgarreMano : MonoBehaviour
             child.transform.SetParent(parentOriginal);
             child.transform.localPosition = new Vector3(0,0,0);
             child.transform.localRotation = Quaternion.identity;
+            // Insertar puntos
+            
             child.GetComponentInChildren<ShootGun>().ResetAmmunation();
             Debug.Log("soltado");
         }

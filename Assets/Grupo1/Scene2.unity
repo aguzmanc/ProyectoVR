@@ -1140,7 +1140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &351090204
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3784,7 +3784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1323087011
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4609,6 +4609,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4a45ff7f3715f43aa72c530fd98ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 2.5
+      inSlope: -0.16057973
+      outSlope: -0.16057973
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.5057054
+      value: 2.2582142
+      inSlope: -0.19830622
+      outSlope: -0.19830622
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.27515554
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3.5056977
+      value: 1.199595
+      inSlope: -0.33144116
+      outSlope: -0.33144116
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 5
+      value: 1
+      inSlope: -0.13357069
+      outSlope: -0.13357069
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   textScore: {fileID: 1078641165}
 --- !u!114 &1549016051
 MonoBehaviour:

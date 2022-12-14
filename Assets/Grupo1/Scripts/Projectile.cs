@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter(Collision other) {
         if (other.collider.CompareTag("Target")) {
             Debug.Log("Acierta");
-            GameController.Instance.SumarPuntos();
+            GameController.Instance.ActualizarPuntos();
         }
         Destroy(this.gameObject);
     }
