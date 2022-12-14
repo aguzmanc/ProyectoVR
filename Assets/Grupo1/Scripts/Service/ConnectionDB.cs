@@ -7,16 +7,6 @@ namespace UnityPoyect
 {
     public static class ConnectionDB
     {
-        public static string requestUriMain = "http://192.168.33.20:5000/";
-        /*public HttpWebRequest Request { get; set; }
-        public HttpWebResponse Response { get; set; }
-        public StreamReader Reader { get; set; }
-
-        public ConnectionDB(string nameExtension)
-        {
-        
-        }*/
-
-        
+        public static string requestUriMain = "https://969e-181-115-166-97.sa.ngrok.io/";
     }
 }
