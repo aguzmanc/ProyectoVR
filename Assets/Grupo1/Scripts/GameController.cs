@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityPoyect;
 
 public class GameController : MonoBehaviour
 {
-    public float points;
+    private float points;
     public float max_points;
-    public string username;
+    private string username;
+    public int user_id; 
 
     public float timer;
     private float points_multiplier;
@@ -26,10 +28,12 @@ public class GameController : MonoBehaviour
     }
     
     private void Start() {
-        points = 0;
-        max_points = points;
-        points_multiplier = 1f;
+        points = 0; max_points = points; points_multiplier = 1f;
+
         username = PlayerPrefs.GetString("username");
+        UserService service = new UserService();
+        user_id = service.PostUser(username).idUser;
+
         updateText();
     }
     
