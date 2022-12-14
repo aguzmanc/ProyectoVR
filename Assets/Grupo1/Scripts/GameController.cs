@@ -5,7 +5,11 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    private int points;
+    private float points;
+    private float max_points;
+    private string username;
+
+    [SerializeField] private AnimationCurve curve;
     [SerializeField] private Text textScore;
 
     public static GameController Instance { get; private set;}
@@ -21,16 +25,29 @@ public class GameController : MonoBehaviour
     
     private void Start() {
         points = 0;
-        textScore.text = $"{points.ToString()} pts.";
+        max_points = points;
+        username = PlayerPrefs.GetString("username");
+        updateText();
     }
     
-    public void SumarPuntos() {
-        points += 10;
-        textScore.text = $"{points.ToString()} pts.";
+    public void ActualizarPuntos() {
+        points = points + 10f;        
+        updateText();
+    }
+
+    private void MaximoPuntaje() {        
+        if (points > max_points) {
+            max_points = points;
+        }
     }
 
     public void ReiniciarPuntos() {
-        points = 0;
+        MaximoPuntaje();
+        points = 0;        
+        updateText();
+    }
+
+    private void updateText() {
         textScore.text = $"{points.ToString()} pts.";
     }
 }
