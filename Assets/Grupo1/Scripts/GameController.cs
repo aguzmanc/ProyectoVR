@@ -8,7 +8,8 @@ public class GameController : MonoBehaviour
 {    
     [Header("Usuario")]
     public string username;
-    public int user_id; 
+    public int user_id;
+    public string jsonUsers;
     
     [Header("Sistema puntaje")]
     public float points_to_plus;
@@ -21,6 +22,7 @@ public class GameController : MonoBehaviour
     
     [Header("UI")]    
     [SerializeField] private Text textScore;
+    [SerializeField] private Text users_score;
 
     public static GameController Instance { get; private set;}
 
@@ -38,7 +40,8 @@ public class GameController : MonoBehaviour
         username = PlayerPrefs.GetString("username");
         UserService service = new UserService();
         user_id = service.PostUser(username).idUser;
-        Debug.Log(service.GetUserDetails());
+        jsonUsers = service.GetUserDetails();
+        users_score.text = jsonUsers;
 
         UpdateText();        
     }
