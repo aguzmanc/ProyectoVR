@@ -33,14 +33,14 @@ namespace UnityPoyect
             
         }
 
-        public List<User> GetUserDetails()
+        public UserList GetUserDetails()
         {
             UserList list = new UserList();
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(ConnectionDB.requestUriMain+"users");
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             StreamReader reader = new StreamReader(response.GetResponseStream());
             string json = reader.ReadToEnd();
-            List<User> s = JsonUtility.FromJson<List<User>>(json);
+            UserList s = JsonUtility.FromJson<UserList>(json);
             
             return s;
         }
