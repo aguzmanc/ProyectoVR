@@ -5,14 +5,14 @@ using UnityEngine.UI;
 using UnityPoyect;
 
 public class GameController : MonoBehaviour
-{
-    private float points;
-    public float max_points;
+{    
     private string username;
     public int user_id; 
-
+    [Header("Sistema puntaje")]
+    public float points;
+    public float max_points;
     public float timer;
-    private float points_multiplier;
+    public float points_multiplier;
     public float shoot_miss_decreaser;
     [SerializeField] private AnimationCurve curve;
     [SerializeField] private Text textScore;
