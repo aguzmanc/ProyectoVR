@@ -7,7 +7,7 @@ namespace UnityPoyect
 {
     public class UserList
     {
-        public User [] user;
+        public User [] users;
     }
     
     public class User
@@ -16,33 +16,11 @@ namespace UnityPoyect
         {
             
         }
-        public int _idUser;
-        public int idUser
-        {
-            get { return _idUser; }
-            set { _idUser = value; }
-        }
-        
-        private string name;
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        private string createAt;
-        public string CreateAt
-        {
-            get { return createAt; }
-            set { createAt = value; }
-        }
-
+        public int idUser;
+        private string nameUser;
+        private string create_at;
         private int status;
-        public int Status
-        {
-            get { return status; }
-            set { status = value; }
-        }
+
         
         
 
