@@ -29,12 +29,12 @@ public class GameController : MonoBehaviour
     
     private void Start() {
         points = 0; max_points = points; points_multiplier = 1f;
-
         username = PlayerPrefs.GetString("username");
         UserService service = new UserService();
         user_id = service.PostUser(username).idUser;
+        Debug.Log(service.GetUserDetails());
 
-        updateText();
+        updateText();        
     }
     
     private void Update() {
