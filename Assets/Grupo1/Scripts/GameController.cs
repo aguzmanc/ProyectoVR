@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
 
     public float timer;
     private float points_multiplier;
+    public float shoot_miss_decreaser;
     [SerializeField] private AnimationCurve curve;
     [SerializeField] private Text textScore;
 
@@ -28,13 +29,13 @@ public class GameController : MonoBehaviour
     }
     
     private void Start() {
-        points = 0; max_points = points; points_multiplier = 1f;
-
+        points = 0; max_points = points; points_multiplier = 1f; shoot_miss_decreaser = 0f;
         username = PlayerPrefs.GetString("username");
         UserService service = new UserService();
         user_id = service.PostUser(username).idUser;
+        Debug.Log(service.GetUserDetails());
 
-        updateText();
+        UpdateText();        
     }
     
     private void Update() {
@@ -48,8 +49,10 @@ public class GameController : MonoBehaviour
             points_multiplier = curve.Evaluate(timer);
         
         timer = 0f;
-        points = Mathf.Round(points + (10f * points_multiplier));        
-        updateText();
+        float multiplier = (15f * points_multiplier);
+        points = Mathf.Round(points + (multiplier - (multiplier * shoot_miss_decreaser))); 
+        shoot_miss_decreaser = 0f;       
+        UpdateText();
     }
 
     private void MaximoPuntaje() {        
@@ -61,10 +64,10 @@ public class GameController : MonoBehaviour
     public void ReiniciarPuntos() {
         MaximoPuntaje();
         points = 0;        
-        updateText();
+        UpdateText();
     }
 
-    private void updateText() {
+    private void UpdateText() {
         textScore.text = $"{points.ToString()} pts.";
     }
 }

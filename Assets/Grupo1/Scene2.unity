@@ -2886,6 +2886,10 @@ PrefabInstance:
       value: TargetShooting (3)
       objectReference: {fileID: 0}
     - target: {fileID: 3027770088981722075, guid: 948b0f20a9e9e064780ff35dc1990603, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027770088981722075, guid: 948b0f20a9e9e064780ff35dc1990603, type: 3}
       propertyPath: m_TagString
       value: Target
       objectReference: {fileID: 0}
@@ -4928,38 +4932,38 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 2.5
-      inSlope: -0.16757396
-      outSlope: -0.16757396
+      inSlope: -0.51989555
+      outSlope: -0.51989555
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 3.1905818
-      value: 1.9653416
-      inSlope: -0.4862099
-      outSlope: -0.4862099
+      time: 0.97125196
+      value: 1.9950504
+      inSlope: -1.7140687
+      outSlope: -1.7140687
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.095739365
+      inWeight: 0.13976063
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 5.647522
-      value: 1.2574463
-      inSlope: 0
-      outSlope: 0
+      time: 1.6527398
+      value: 1.3663429
+      inSlope: -0.11359821
+      outSlope: -0.11359821
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.2277639
-      outWeight: 0.13243142
+      inWeight: 0.31195587
+      outWeight: 0.06787634
     - serializedVersion: 3
       time: 10
       value: 1
-      inSlope: -0.05914936
-      outSlope: -0.05914936
-      tangentMode: 34
+      inSlope: -0.020314662
+      outSlope: -0.020314662
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.08758209
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2

@@ -18,6 +18,9 @@ public class Projectile : MonoBehaviour
         if (other.collider.CompareTag("Target")) {
             Debug.Log("Acierta");
             GameController.Instance.ActualizarPuntos();
+        } else {
+            if (GameController.Instance.shoot_miss_decreaser < 0.55f)
+                GameController.Instance.shoot_miss_decreaser += 0.05f;                
         }
         Destroy(this.gameObject);
     }
