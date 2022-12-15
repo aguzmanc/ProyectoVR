@@ -4923,38 +4923,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4a45ff7f3715f43aa72c530fd98ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_points: 0
+  username: 
   user_id: 0
+  points_to_plus: 0
+  points: 0
+  max_points: 0
   timer: 0
+  points_multiplier: 0
+  shoot_miss_decreaser: 0
   curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 2.5
-      inSlope: -0.51989555
-      outSlope: -0.51989555
+      inSlope: -0.18600816
+      outSlope: -0.18600816
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.97125196
-      value: 1.9950504
-      inSlope: -1.7140687
-      outSlope: -1.7140687
+      time: 1.6500893
+      value: 2.19307
+      inSlope: -0.58131653
+      outSlope: -0.58131653
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.13976063
+      inWeight: 0.1173872
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1.6527398
-      value: 1.3663429
-      inSlope: -0.11359821
-      outSlope: -0.11359821
+      time: 4.5770035
+      value: 1.2030137
+      inSlope: -0.097608194
+      outSlope: -0.097608194
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.31195587
+      inWeight: 0.30417338
       outWeight: 0.06787634
     - serializedVersion: 3
       time: 10

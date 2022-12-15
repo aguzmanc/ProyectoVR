@@ -33,16 +33,16 @@ namespace UnityPoyect
             
         }
 
-        public UserList GetUserDetails()
+        public string GetUserDetails()
         {
             UserList list = new UserList();
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(ConnectionDB.requestUriMain+"users");
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             StreamReader reader = new StreamReader(response.GetResponseStream());
             string json = reader.ReadToEnd();
-            UserList s = JsonUtility.FromJson<UserList>(json);
+            //UserList s = JsonUtility.FromJson<UserList>(json);
             
-            return s;
+            return json;
         }
         
     }

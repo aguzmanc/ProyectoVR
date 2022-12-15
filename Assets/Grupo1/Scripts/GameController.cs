@@ -6,15 +6,20 @@ using UnityPoyect;
 
 public class GameController : MonoBehaviour
 {    
-    private string username;
+    [Header("Usuario")]
+    public string username;
     public int user_id; 
+    
     [Header("Sistema puntaje")]
+    public float points_to_plus;
     public float points;
     public float max_points;
     public float timer;
     public float points_multiplier;
-    public float shoot_miss_decreaser;
     [SerializeField] private AnimationCurve curve;
+    public float shoot_miss_decreaser;    
+    
+    [Header("UI")]    
     [SerializeField] private Text textScore;
 
     public static GameController Instance { get; private set;}
@@ -40,17 +45,22 @@ public class GameController : MonoBehaviour
     
     private void Update() {
         timer += Time.deltaTime;
-    }
-
-    public void ActualizarPuntos() {
+        
         if (timer > 10f)
             points_multiplier = curve.Evaluate(10f);            
         else
             points_multiplier = curve.Evaluate(timer);
+
+        float multiplier = (15f * points_multiplier);
+        points_to_plus = Mathf.Round(points + (multiplier - (multiplier * shoot_miss_decreaser)));
+    }
+
+    public void ActualizarPuntos() {
+        
         
         timer = 0f;
-        float multiplier = (15f * points_multiplier);
-        points = Mathf.Round(points + (multiplier - (multiplier * shoot_miss_decreaser))); 
+        
+        points = points_to_plus; 
         shoot_miss_decreaser = 0f;       
         UpdateText();
     }
