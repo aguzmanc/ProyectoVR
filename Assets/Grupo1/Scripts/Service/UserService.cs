@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.IO;
 
+
 namespace UnityPoyect
 {
     public class UserService
@@ -32,20 +33,16 @@ namespace UnityPoyect
             
         }
 
-        public UserList GetUserDetails(string user)
+        public User[] GetUserDetails(string user)
         {
             UserList list = new UserList();
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(ConnectionDB.requestUriMain+"userAllDetails");
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             StreamReader reader = new StreamReader(response.GetResponseStream());
             string json = reader.ReadToEnd();
-            list = JsonUtility.FromJson<UserList>(json);
-            var jsonObject = JsonConvert.DeserializeObject(json);
-            foreach (var item in jsonObject["Results"])
-            {
-                var id = item.Make_ID;
-            }
-            return list;
+            User[] s = JsonUtility.FromJson<User[]>(json);
+            
+            return s;
         }
         
     }
