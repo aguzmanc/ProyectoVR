@@ -40,6 +40,11 @@ namespace UnityPoyect
             StreamReader reader = new StreamReader(response.GetResponseStream());
             string json = reader.ReadToEnd();
             list = JsonUtility.FromJson<UserList>(json);
+            var jsonObject = JsonConvert.DeserializeObject(json);
+            foreach (var item in jsonObject["Results"])
+            {
+                var id = item.Make_ID;
+            }
             return list;
         }
         
