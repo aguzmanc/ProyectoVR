@@ -5,10 +5,13 @@ using System.Collections.Specialized;
 
 namespace UnityPoyect
 {
+    public class UserList
+    {
+        public User [] user;
+    }
     
     public class User
     {
-
         public User()
         {
             

@@ -6,6 +6,7 @@ using UnityEngine;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace UnityPoyect
 {
@@ -35,7 +36,17 @@ namespace UnityPoyect
             {
                 Debug.Log(ex.Message);
             }
-            
+        }
+
+        public UserList GetUserDetails(string user)
+        {
+            UserList list = new UserList();
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("");
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            StreamReader reader = new StreamReader(response.GetResponseStream());
+            string json = reader.ReadToEnd();
+            list = JsonUtility.FromJson<UserList>(json);
+            return list;
         }
         
     }
