@@ -22,26 +22,20 @@ namespace UnityPoyect
         }
 
         public UserSession PostUser(string user)
-        {
-            try
-            {
-                string param = "{\"name_user\":\"" + user + "\"}";
-                wb.Headers.Add("content-type", "application/json");
-                byte[]e =  wb.UploadData(ConnectionDB.requestUriMain+"users", "POST", Encoding.UTF8.GetBytes(param));
-                string response =  Encoding.ASCII.GetString(e);
+        {                                   
+            string param = "{\"name_user\":\"" + user + "\"}";
+            wb.Headers.Add("content-type", "application/json");
+            byte[]e =  wb.UploadData(ConnectionDB.requestUriMain+"users", "POST", Encoding.UTF8.GetBytes(param));
+            string response =  Encoding.ASCII.GetString(e);
             
-                return JsonUtility.FromJson<UserSession>(response);
-            }
-            catch (System.Exception ex)
-            {
-                Debug.Log(ex.Message);
-            }
+            return JsonUtility.FromJson<UserSession>(response);
+            
         }
 
         public UserList GetUserDetails(string user)
         {
             UserList list = new UserList();
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(ConnectionDB.requestUriMain+"userAllDetails");
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             StreamReader reader = new StreamReader(response.GetResponseStream());
             string json = reader.ReadToEnd();

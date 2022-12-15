@@ -8,6 +8,8 @@ TagManager:
   - Target
   - RoomLight
   - Barril
+  - ReiniciarPartida
+  - Bala
   layers:
   - Default
   - TransparentFX

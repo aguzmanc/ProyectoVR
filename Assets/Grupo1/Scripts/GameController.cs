@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityPoyect;
 
 public class GameController : MonoBehaviour
 {
     private float points;
-    private float max_points;
+    public float max_points;
     private string username;
+    public int user_id; 
 
+    public float timer;
+    private float points_multiplier;
     [SerializeField] private AnimationCurve curve;
     [SerializeField] private Text textScore;
 
@@ -24,14 +28,27 @@ public class GameController : MonoBehaviour
     }
     
     private void Start() {
-        points = 0;
-        max_points = points;
+        points = 0; max_points = points; points_multiplier = 1f;
+
         username = PlayerPrefs.GetString("username");
+        UserService service = new UserService();
+        user_id = service.PostUser(username).idUser;
+
         updateText();
     }
     
+    private void Update() {
+        timer += Time.deltaTime;
+    }
+
     public void ActualizarPuntos() {
-        points = points + 10f;        
+        if (timer > 10f)
+            points_multiplier = curve.Evaluate(10f);            
+        else
+            points_multiplier = curve.Evaluate(timer);
+        
+        timer = 0f;
+        points = Mathf.Round(points + (10f * points_multiplier));        
         updateText();
     }
 
