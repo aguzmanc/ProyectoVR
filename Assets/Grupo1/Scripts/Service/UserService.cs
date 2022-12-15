@@ -7,7 +7,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.IO;
-
+using System.Collections.Generic;
 
 namespace UnityPoyect
 {
@@ -33,14 +33,14 @@ namespace UnityPoyect
             
         }
 
-        public User[] GetUserDetails(string user)
+        public List<User> GetUserDetails(string user)
         {
             UserList list = new UserList();
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(ConnectionDB.requestUriMain+"userAllDetails");
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             StreamReader reader = new StreamReader(response.GetResponseStream());
             string json = reader.ReadToEnd();
-            User[] s = JsonUtility.FromJson<User[]>(json);
+            List<User> s = JsonUtility.FromJson<List<User>>(json);
             
             return s;
         }

@@ -2,12 +2,13 @@ using UnityEngine;
 using System.Net;
 using System.IO;
 using System.Collections.Specialized;
+using System.Collections.Generic;
 
 namespace UnityPoyect
 {
     public class UserList
     {
-        public User [] user;
+        public List<User>  user;
     }
     
     public class User
